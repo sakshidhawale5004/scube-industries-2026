@@ -1,6 +1,7 @@
 {
   "name": "scube-industries",
   "version": "1.0.0",
+  "type": "module",
   "description": "SCUBE Industries Website",
   "scripts": {
     "build": "echo \"No build required\""
