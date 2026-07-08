@@ -2,7 +2,9 @@
   "name": "scube-industries",
   "version": "1.0.0",
   "description": "SCUBE Industries Website",
-  "scripts": {},
+  "scripts": {
+    "build": "echo \"No build required\""
+  },
   "dependencies": {
     "nodemailer": "^6.9.7",
     "formidable": "^2.1.1"

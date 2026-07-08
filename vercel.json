@@ -1,4 +1,5 @@
 {
+  "buildCommand": "echo 'No build required'",
   "env": {
     "GMAIL_USER": "@gmail.com",
     "GMAIL_PASSWORD": "your_app_password_here"
