@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Products | SCUBE Industries</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-blue: #02204c;
+            --secondary-blue: #06347a;
+            --accent-blue: #0047b3;
+            --light-bg: #f8f9fa;
+            --text-dark: #333;
+            --text-light: #fff;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-dark);
+            overflow-x: hidden;
+            line-height: 1.6;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.2;
+        }
+        
+        p {
+            line-height: 1.6;
+        }
+
+        /* --- Top Bar --- */
+        .top-bar {
+            background-color: #fff;
+            border-bottom: 1px solid #eee;
+            font-size: 0.75rem;
+            font-weight: 500;
+            padding: 10px 0;
+        }
+
+        .top-bar i { color: var(--primary-blue); margin-right: 5px; }
+        
+        .top-bar span {
+            display: inline-flex;
+            align-items: center;
+            margin-right: 25px;
+            gap: 5px;
+            white-space: nowrap;
+        }
+        
+        .top-bar span i {
+            flex-shrink: 0;
+        }
+        
+        .top-bar .row {
+            align-items: center;
+        }
+        
+        .top-bar-left, .top-bar-right {
+            display: flex;
+            flex-wrap: nowrap;
+            gap: 20px;
+            align-items: center;
+            justify-content: flex-start;
+        }
+        
+        .top-bar-right {
+            justify-content: flex-end;
+        }
+        
+        @media (max-width: 1400px) {
+            .top-bar span {
+                margin-right: 15px;
+                font-size: 0.7rem;
+            }
+            .top-bar-left, .top-bar-right {
+                gap: 12px;
+            }
+        }
+        
+        @media (max-width: 1200px) {
+            .top-bar span {
+                margin-right: 10px;
+            }
+        }
+
+        /* --- Navbar --- */
+        .navbar {
+            padding: 15px 0;
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            z-index: 100;
+        }
+
+        .navbar-collapse {
+            overflow: visible !important;
+        }
+
+        .navbar-nav {
+            overflow: visible !important;
+        }
+
+        .navbar-brand { font-weight: 500; color: var(--primary-blue); font-size: 1.8rem; line-height: 1; }
+
+        .navbar-brand span { display: block; font-size: 0.8rem; font-weight: 500; letter-spacing: 2px; }
+
+        .nav-link { font-size: 0.85rem; font-weight: 500; text-transform: uppercase; color: var(--primary-blue) !important; margin: 0 10px; }
+
+        .nav-link:hover { color: var(--accent-blue) !important; }
+
+       
+
+        /* Dropdown styling */
+
+        .dropdown-toggle::after { display: none !important; }
+
+        .dropdown-menu {
+
+            border-radius: 8px;
+
+            border: 1px solid #eee;
+
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+
+            min-width: 200px;
+
+            padding: 8px 0;
+
+            animation: fadeIn 0.2s ease-in;
+
+            z-index: 1000 !important;
+
+            position: absolute;
+
+            top: 100% !important;
+
+            display: none;
+
+            left: 0;
+
+        }
+
+        .nav-item.dropdown:hover .dropdown-menu {
+
+            display: block;
+
+        }
+
+        .nav-item.dropdown {
+
+            position: relative;
+
+        }
+
+        .dropdown-menu .dropdown-item {
+
+            color: var(--primary-blue);
+
+            font-size: 0.85rem;
+
+            padding: 10px 20px;
+
+            transition: all 0.2s ease;
+
+            white-space: nowrap;
+
+        }
+
+        .dropdown-menu .dropdown-item:hover {
+
+            background-color: #f0f4f8;
+
+            color: var(--accent-blue);
+
+        }
+
+        .dropdown-menu .dropdown-item:active {
+
+            background-color: #f0f4f8;
+
+            color: var(--accent-blue);
+
+        }
+
+        @keyframes fadeIn {
+
+            from { opacity: 0; transform: translateY(-10px); }
+
+            to { opacity: 1; transform: translateY(0); }
+
+        }
+
+        .btn-primary-custom {
+
+            background-color: var(--primary-blue);
+
+            color: white;
+
+            border-radius: 0;
+
+            font-weight: 500;
+
+            padding: 10px 24px;
+
+            font-size: 0.85rem;
+
+            border: 2px solid var(--primary-blue);
+
+            transition: all 0.3s ease;
+
+        }
+
+        .btn-primary-custom:hover { background-color: transparent; color: var(--primary-blue); }
+
+        /* --- Page Header --- */
+        .page-header {
+            background: linear-gradient(to right, rgba(2, 32, 76, 0.95) 0%, rgba(2, 32, 76, 0.7) 100%), url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+        .page-header h1 { font-family: 'Montserrat', sans-serif !important; font-weight: 500; text-transform: uppercase; letter-spacing: 2px; font-size: 3rem; }
+        .page-header .subtitle { font-family: 'Montserrat', sans-serif !important; font-weight: 500; font-size: 1.1rem; opacity: 0.9; }
+
+        /* --- Section Styles --- */
+        .section-subtitle { font-family: 'Montserrat', sans-serif; font-size: 0.75rem; font-weight: 500; color: #777; letter-spacing: 2px; text-transform: uppercase; position: relative; display: inline-block; padding-left: 40px; }
+        .section-subtitle::before { content: ''; position: absolute; left: 0; top: 50%; width: 30px; height: 1px; background-color: #777; }
+        .section-title { font-family: 'Montserrat', sans-serif; font-size: 2rem; font-weight: 500; color: var(--primary-blue); margin-bottom: 20px; text-transform: uppercase; }
+
+        /* --- Product Categories --- */
+        .category-filter {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+        }
+        .category-btn {
+            background: white;
+            border: 2px solid var(--primary-blue);
+            color: var(--primary-blue);
+            padding: 10px 25px;
+            border-radius: 0;
+            font-weight: 500;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+        }
+        .category-btn:hover,
+        .category-btn.active {
+            background: var(--primary-blue);
+            color: white;
+        }
+
+        /* --- Product Card --- */
+        .product-card {
+            background: #fff;
+            border: none;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            border-radius: 0;
+            transition: all 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        .product-img-wrapper {
+            position: relative;
+            height: 200px;
+            overflow: hidden;
+            background: var(--light-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .product-img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 15px;
+            transition: transform 0.3s ease;
+        }
+        .product-card:hover .product-img {
+            transform: scale(1.08);
+        }
+        .product-card-body {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .product-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--primary-blue);
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .product-desc {
+            font-size: 0.85rem;
+            color: #666;
+            margin-bottom: 15px;
+            line-height: 1.5;
+            flex-grow: 1;
+        }
+        .product-btn {
+            background: var(--primary-blue);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-weight: 500;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 100%;
+            text-transform: uppercase;
+            border-radius: 0;
+            margin-top: auto;
+        }
+        .product-btn:hover {
+            background: var(--accent-blue);
+            color: white;
+        }
+
+        /* --- Category Section Headers --- */
+        .category-section {
+            margin-bottom: 60px;
+        }
+        .category-section-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--primary-blue);
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent-blue);
+            text-transform: uppercase;
+        }
+
+        /* --- CTA Banner --- */
+        .cta-banner {
+            background: var(--secondary-blue);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+            margin: 60px 0;
+        }
+        .cta-banner h2 {
+            font-weight: 500;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+        .cta-banner p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+        }
+        .btn-light-custom {
+            background-color: white;
+            color: var(--primary-blue);
+            border: 2px solid white;
+            padding: 12px 30px;
+            font-weight: 500;
+            border-radius: 0;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            transition: all 0.3s;
+        }
+        .btn-light-custom:hover {
+            background-color: transparent;
+            color: white;
+        }
+
+        /* --- Footer --- */
+        .footer {
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 60px 0 20px;
+            font-size: 0.85rem;
+            margin-top: 80px;
+        }
+        .footer h5 { font-weight: 500; font-size: 1rem; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; }
+        .footer-links { list-style: none; padding: 0; margin: 0; }
+        .footer-links li { margin-bottom: 10px; }
+        .footer-links a { color: #aaa; text-decoration: none; transition: color 0.3s; }
+        .footer-links a:hover { color: white; }
+        .footer-contact { padding-left: 20px; }
+        .footer-contact i { width: 20px; color: var(--accent-blue); margin-right: 10px; flex-shrink: 0; }
+        .footer-contact p { margin-bottom: 10px; color: #aaa; display: flex; align-items: center; gap: 5px; white-space: nowrap; }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; margin-top: 40px; text-align: center; color: #777; font-size: 0.75rem; }
+        @media (max-width: 1200px) {
+            .footer-contact { padding-left: 10px; }
+            .footer-contact p { font-size: 0.8rem; }
+        }
+        @media (max-width: 992px) {
+            .footer-contact { padding-left: 0; }
+            .col-lg-2.offset-lg-1 { margin-left: 0 !important; }
+        }
+        @media (max-width: 768px) {
+            .footer-contact p { white-space: normal; }
+        }
+    </style>
+<link rel="stylesheet" href="styles-3d.css">
+</head>
+<body>
+
+    <div class="top-bar py-2 d-none d-lg-block">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="top-bar-left">
+                        <span><i class="fas fa-phone-alt"></i> +91 87794 45970</span>
+                        <span><i class="fas fa-envelope"></i> sales@scubeindustries.com</span>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="top-bar-right">
+                        <span><i class="fas fa-clock"></i> Mon - Sat: 9:00 AM - 6:00 PM</span>
+                        <span><i class="fas fa-map-marker-alt"></i> ATC-65, T.T.C MIDC AREA, MAHAPE, NAVI MUMBAI - 400710</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html" style="display:flex;align-items:center;gap:10px;"><img src="logo.png.jpeg" alt="Logo" style="height:70px;width:auto;"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" href="aboutus.html" id="aboutDropdown">
+                            About Us <i class="fas fa-chevron-down ms-1" style="font-size:0.6rem;"></i>
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="aboutDropdown">
+                            <li><a class="dropdown-item" href="corporate-profile.html">Corporate Profile</a></li>
+                            <li><a class="dropdown-item" href="chairmans-desk.html">Chairman's Desk</a></li>
+                            <li><a class="dropdown-item" href="quality-policy.html">Quality Policy</a></li>
+                            <li><a class="dropdown-item" href="certification.html">Certification</a></li>
+                            <li><a class="dropdown-item" href="hse.html">HSE</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link active" href="products.html" id="productsDropdown">
+                            Products <i class="fas fa-chevron-down ms-1" style="font-size:0.6rem;"></i>
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="productsDropdown">
+                            <li><a class="dropdown-item" href="flow-control-equipment.html">Flow Control Equipment</a></li>
+                            <li><a class="dropdown-item" href="wireline-tools-accessories.html">Wireline Tools & Accessories</a></li>
+                            <li><a class="dropdown-item" href="pressure-control-equipment.html">Pressure Control Equipment</a></li>
+                            <li><a class="dropdown-item" href="completion-equipment.html">Completion Equipment</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="news.html">News</a></li>
+                    <li class="nav-item"><a class="nav-link" href="careers.html">Career</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+                </ul>
+                <a href="contact.html"><button class="btn btn-primary-custom">GET A QUOTE</button></a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="page-header">
+        <div class="container">
+            <h1>Our Products</h1>
+            <p class="subtitle">SCUBE Industries Product Range</p>
+        </div>
+    </header>
+
+    <!-- Products Section -->
+    <section class="py-5">
+        <div class="container">
+            <!-- Category Filter Buttons -->
+            <div class="category-filter mb-5">
+                <button class="category-btn active" onclick="filterCategory('all')">All Products</button>
+                <button class="category-btn" onclick="filterCategory('wireline')">Wireline</button>
+                <button class="category-btn" onclick="filterCategory('coiled')">Pressure</button>
+                <button class="category-btn" onclick="filterCategory('completion')">Completion</button>
+                <button class="category-btn" onclick="filterCategory('flow')">Flow Control</button>
+            </div>
+
+            <!-- WIRELINE PRODUCTS -->
+            <div class="category-section" id="wireline-section">
+                <h3 class="category-section-title">Wireline Tools & Accessories</h3>
+                <div class="row g-4 mb-5">
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card product-card">
+                            <div class="product-img-wrapper">
+                                <img src="WIRELINE-TOOLS-AND-ACCESSORIES/A RUNNING TOOL.png" class="product-img" alt="A Running Tool">
+                            </div>
+                            <div class="product-card-body">
+                                <h5 class="product-title">A Running Tool</h5>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card product-card">
+                            <div class="product-img-wrapper">
+                                <img src="WIRELINE-TOOLS-AND-ACCESSORIES/B SHIFTING TOOL.png" class="product-img" alt="B Shifting Tool">
+                            </div>
+                            <div class="product-card-body">
+                                <h5 class="product-title">B Shifting Tool</h5>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card product-card">
+                            <div class="product-img-wrapper">
+                                <img src="WIRELINE-TOOLS-AND-ACCESSORIES/BO SHIFTING TOOL.png" class="product-img" alt="BO Shifting Tool">
+                            </div>
+                            <div class="product-card-body">
+                                <h5 class="product-title">BO Shifting Tool</h5>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card product-card">
+                            <div class="product-img-wrapper">
+                                <img src="WIRELINE-TOOLS-AND-ACCESSORIES/C1 RUNNING TOOL.png" class="product-img" alt="C1 Running Tool">
+                            </div>
+                            <div class="product-card-body">
+                                <h5 class="product-title">C1 Running Tool</h5>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card product-card">
+                            <div class="product-img-wrapper">
+                                <img src="WIRELINE-TOOLS-AND-ACCESSORIES/GR PULLING TOOL.jpg" class="product-img" alt="GR Pulling Tool">
+                            </div>
+                            <div class="product-card-body">
+                                <h5 class="product-title">GR Pulling Tool</h5>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card product-card">
+                            <div class="product-img-wrapper">
+                                <img src="WIRELINE-TOOLS-AND-ACCESSORIES/GS PULLING TOOL.png" class="product-img" alt="GS Pulling Tool">
+                            </div>
+                            <div class="product-card-body">
+                                <h5 class="product-title">GS Pulling Tool</h5>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card product-card">
+                            <div class="product-img-wrapper">
+                                <img src="WIRELINE-TOOLS-AND-ACCESSORIES/GU ADAPTER.png" class="product-img" alt="GU Adapter">
+                            </div>
+                            <div class="product-card-body">
+                                <h5 class="product-title">GU Adapter</h5>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card product-card">
+                            <div class="product-img-wrapper">
+                                <img src="WIRELINE-TOOLS-AND-ACCESSORIES/JDC PULLING TOOL.jpg" class="product-img" alt="JDC Pulling Tool">
+                            </div>
+                            <div class="product-card-body">
+                                <h5 class="product-title">JDC Pulling Tool</h5>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card product-card">
+                            <div class="product-img-wrapper">
+                                <img src="WIRELINE-TOOLS-AND-ACCESSORIES/JDS PULLING TOOL.png" class="product-img" alt="JDS Pulling Tool">
+                            </div>
+                            <div class="product-card-body">
+                                <h5 class="product-title">JDS Pulling Tool</h5>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card product-card">
+                            <div class="product-img-wrapper">
+                                <img src="WIRELINE-TOOLS-AND-ACCESSORIES/JUC PULLING TOOL.png" class="product-img" alt="JUC Pulling Tool">
+                            </div>
+                            <div class="product-card-body">
+                                <h5 class="product-title">JUC Pulling Tool</h5>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card product-card">
+                            <div class="product-img-wrapper">
+                                <img src="WIRELINE-TOOLS-AND-ACCESSORIES/JUS PULLING TOOL.png" class="product-img" alt="JUS Pulling Tool">
+                            </div>
+                            <div class="product-card-body">
+                                <h5 class="product-title">JUS Pulling Tool</h5>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card product-card">
+                            <div class="product-img-wrapper">
+                                <img src="WIRELINE-TOOLS-AND-ACCESSORIES/R EQUALISING ASSEMBLY.png" class="product-img" alt="R Equalising Assembly">
+                            </div>
+                            <div class="product-card-body">
+                                <h5 class="product-title">R Equalising Assembly</h5>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card product-card">
+                            <div class="product-img-wrapper">
+                                <img src="WIRELINE-TOOLS-AND-ACCESSORIES/R RUNNING TOOL.png" class="product-img" alt="R Running Tool">
+                            </div>
+                            <div class="product-card-body">
+                                <h5 class="product-title">R Running Tool</h5>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card product-card">
+                            <div class="product-img-wrapper">
+                                <img src="WIRELINE-TOOLS-AND-ACCESSORIES/SB PULLING TOOL.png" class="product-img" alt="SB Pulling Tool">
+                            </div>
+                            <div class="product-card-body">
+                                <h5 class="product-title">SB Pulling Tool</h5>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- COILED TUBING PRODUCTS -->
+            <div class="category-section" id="coiled-section">
+                <h3 class="category-section-title">Pressure Control Equipment</h3>
+                <div class="row g-4 mb-5">
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card product-card">
+                            <div class="product-img-wrapper">
+                                <img src="Coiled Tubing Tools/LUBRICATOR.jpg" class="product-img" alt="Lubricator">
+                            </div>
+                            <div class="product-card-body">
+                                <h5 class="product-title">Lubricator</h5>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card product-card">
+                            <div class="product-img-wrapper">
+                                <img src="Coiled Tubing Tools/crossover.avif" class="product-img" alt="Crossover">
+                            </div>
+                            <div class="product-card-body">
+                                <h5 class="product-title">Crossover</h5>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- COMPLETION PRODUCTS -->
+            <div class="category-section" id="completion-section">
+                <h3 class="category-section-title">Completion Equipment</h3>
+                <div class="row g-4 mb-5">
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card product-card">
+                            <div class="product-img-wrapper">
+                                <img src="PRODUCTS/Hydraulic packers.jpg" class="product-img" alt="Production Packers">
+                            </div>
+                            <div class="product-card-body">
+                                <h5 class="product-title">Production Packers</h5>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FLOW CONTROL PRODUCTS -->
+            <div class="category-section" id="flow-section">
+                <h3 class="category-section-title">Flow Control Equipment</h3>
+                <div class="row g-4 mb-5">
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card product-card">
+                            <div class="product-img-wrapper">
+                                <img src="FLOW CONTROL/Landing Nipple.jpg" class="product-img" alt="Landing Nipple">
+                            </div>
+                            <div class="product-card-body">
+                                <h5 class="product-title">Landing Nipple</h5>
+                                <div class="sub-categories mt-auto">
+                                    <a href="X-XN%20LOCK%20MANDREL%20&amp;%20LANDING%20NIPPLE.pdf" target="_blank" class="btn btn-sm btn-outline-primary d-block mb-2 text-start"><i class="fas fa-file-pdf me-2 text-danger"></i>X/XN</a>
+                                    <a href="#" class="btn btn-sm btn-outline-secondary d-block mb-2 text-start"><i class="fas fa-chevron-right me-2"></i>R/RN</a>
+                                    <a href="#" class="btn btn-sm btn-outline-secondary d-block text-start"><i class="fas fa-chevron-right me-2"></i>RPT</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card product-card">
+                            <div class="product-img-wrapper">
+                                <img src="FLOW CONTROL/Sliding Sleeve.jpg" class="product-img" alt="Sliding Sleeve">
+                            </div>
+                            <div class="product-card-body">
+                                <h5 class="product-title">Sliding Sleeve</h5>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card product-card">
+                            <div class="product-img-wrapper">
+                                <img src="FLOW CONTROL/Lock Mandrel.png" class="product-img" alt="Lock Mandrel">
+                            </div>
+                            <div class="product-card-body">
+                                <h5 class="product-title">Lock Mandrel</h5>
+                                <div class="sub-categories mt-auto">
+                                    <a href="X-XN%20LOCK%20MANDREL%20&amp;%20LANDING%20NIPPLE.pdf" target="_blank" class="btn btn-sm btn-outline-primary d-block mb-2 text-start"><i class="fas fa-file-pdf me-2 text-danger"></i>X/XN</a>
+                                    <a href="#" class="btn btn-sm btn-outline-secondary d-block mb-2 text-start"><i class="fas fa-chevron-right me-2"></i>R/RN</a>
+                                    <a href="#" class="btn btn-sm btn-outline-secondary d-block text-start"><i class="fas fa-chevron-right me-2"></i>RPT</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card product-card">
+                            <div class="product-img-wrapper">
+                                <img src="FLOW CONTROL/Plug & Equalising Assemblies.png" class="product-img" alt="Plug & Equalising Assemblies">
+                            </div>
+                            <div class="product-card-body">
+                                <h5 class="product-title">Plug & Equalising Assemblies</h5>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Banner -->
+    <section class="cta-banner">
+        <div class="container">
+            <h2>Need a Custom Solution?</h2>
+            <p>Our engineering team can design tailored products to meet your specific requirements.</p>
+            <a href="contact.html"><button class="btn btn-light-custom">Request Custom Quote <i class="fas fa-arrow-right ms-2"></i></button></a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-3">
+                    <h3 style="font-weight: 500; letter-spacing: 1px; margin-bottom: 20px;">SCUBE<br><span style="font-size: 0.9rem; font-weight: 500;">INDUSTRIES</span></h3>
+                    <p style="color: #aaa;">A professionally managed company specializing in the manufacturing and servicing of high-quality oil & gas equipment.</p>
+                    <div class="mt-3">
+                        <a href="#" class="text-white me-3"><i class="fab fa-linkedin fs-5"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-twitter fs-5"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-facebook fs-5"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 offset-lg-1">
+                    <h5>Explore</h5>
+                    <ul class="footer-links">
+                        <li><a href="aboutus.html">About Us</a></li>
+                        <li><a href="products.html">Our Products</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="news.html">News</a></li>
+                        <li><a href="careers.html">Career</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2">
+                    <h5>Corporate</h5>
+                    <ul class="footer-links">
+                        <li><a href="corporate-profile.html">Company Profile</a></li>
+                        <li><a href="quality-policy.html">Quality Policy</a></li>
+                        <li><a href="hse.html">HSE Policy</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 footer-contact">
+                    <h5>Get In Touch</h5>
+                    <p><i class="fas fa-map-marker-alt"></i> ATC-65, T.T.C MIDC AREA, MAHAPE, NAVI MUMBAI - 400710</p>
+                    <p><i class="fas fa-phone-alt"></i> +91 87794 45970</p>
+                    <p><i class="fas fa-envelope"></i> sales@scubeindustries.com</p>
+                    <a href="contact.html"><button class="btn btn-primary-custom mt-2 border-0" style="background-color: var(--accent-blue);">REQUEST A QUOTE <i class="fas fa-arrow-right ms-2"></i></button></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 SCUBE Industries. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        function filterCategory(category) {
+            const buttons = document.querySelectorAll('.category-btn');
+            const sections = document.querySelectorAll('.category-section');
+            
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            sections.forEach(section => {
+                if (category === 'all') {
+                    section.style.display = 'block';
+                } else {
+                    const sectionId = section.id.replace('-section', '');
+                    section.style.display = sectionId === category ? 'block' : 'none';
+                }
+            });
+        }
+        
+        function viewDetails(productName) {
+            alert('Product: ' + productName + '\n\nFor detailed specifications and pricing, please contact our sales team at sales@scubeindustries.com or call +91 87794 45970');
+        }
+    </script>
+</body>
+</html>

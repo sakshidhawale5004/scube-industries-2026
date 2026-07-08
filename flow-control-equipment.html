@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="scubeApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCUBE Industries | Engineering Excellence</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-blue: #02204c;
+            --secondary-blue: #06347a;
+            --accent-blue: #0047b3;
+            --light-bg: #f8f9fa;
+            --text-dark: #333;
+            --text-light: #fff;
+        }
+
+        body { font-family: 'Montserrat', sans-serif; color: var(--text-dark); overflow-x: hidden; line-height: 1.6; font-size: 1rem; font-weight: 500; }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Montserrat', sans-serif; line-height: 1.2; font-weight: 500; font-weight: 500; }
+        p { line-height: 1.6; font-weight: 500; }
+
+        /* --- HEADER STYLES --- */
+        .top-bar { background-color: #fff; border-bottom: 1px solid #eee; font-size: 0.8rem; font-weight: 500; }
+        .top-bar i { color: var(--primary-blue); margin-right: 5px; }
+
+        .navbar { padding: 15px 0; background-color: #fff; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        .navbar-brand { font-weight: 500; color: var(--primary-blue); font-size: 1.8rem; line-height: 1; text-decoration: none; }
+        .navbar-brand span { display: block; font-size: 0.8rem; font-weight: 500; letter-spacing: 2px; }
+        .nav-link { font-size: 0.85rem; font-weight: 500; text-transform: uppercase; color: var(--primary-blue) !important; margin: 0 10px; cursor: pointer; }
+        
+        .btn-primary-custom {
+            background-color: var(--primary-blue); color: white; border-radius: 0; font-weight: 500;
+            padding: 10px 24px; font-size: 0.85rem; border: 2px solid var(--primary-blue); transition: all 0.3s ease;
+        }
+        .btn-primary-custom:hover { background-color: transparent; color: var(--primary-blue); }
+		/* --- Page Header Banner Styles --- */
+.page-header {
+    background: linear-gradient(to right, rgba(2, 32, 76, 0.85) 0%, rgba(2, 32, 76, 0.7) 100%), url('https://images.unsplash.com/photo-1581092160562-40aa08e78837?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
+    /* Agar aapko thoda gradient chahiye toh niche wali line use karein: */
+    /* background: linear-gradient(to right, #004e7c, #0066a3); */
+    padding: 100px 0;
+    color: white;
+    width: 100%;
+}
+
+.page-title {
+    font-size: 3rem; /* Bada aur bold text */
+    font-weight: 500;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.page-subtitle {
+    font-size: 1.1rem;
+    font-weight: 500;
+    opacity: 0.9; /* Text ko thoda soft dikhane ke liye */
+    letter-spacing: 0.5px;
+}
+.precision-section {
+    background-color: #ffffff;
+}
+
+.precision-title {
+    color: #02204c;
+    font-weight: 500;
+    font-size: 2rem;
+}
+
+.precision-desc {
+    color: #666;
+    line-height: 1.7;
+}
+
+.key-products-title {
+    color: #02204c;
+    font-weight: 500;
+    font-size: 1.3rem;
+}
+
+/* Product List Styling */
+.product-item {
+    background-color: #f0f7ff;
+    padding: 12px 20px;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    color: #444;
+    font-weight: 500;
+}
+
+.product-item i {
+    color: #005a92;
+    margin-right: 15px;
+    font-size: 1.2rem;
+}
+
+/* Feature Cards Styling */
+.feature-small-card {
+    background: #ffffff;
+    border: 1px solid #f0f0f0;
+    border-radius: 15px;
+    height: 100%;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+}
+
+.feature-small-card h6 {
+    color: #02204c;
+    font-weight: 500;
+    font-size: 0.95rem;
+    margin-bottom: 10px;
+}
+
+.feature-small-card p {
+    font-size: 0.8rem;
+    color: #777;
+    margin-bottom: 0;
+    line-height: 1.5;
+}
+
+.feature-icon {
+    width: 40px;
+    height: 40px;
+    background-color: #e6f0f8;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #005a92;
+}
+
+.precision-image-box img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+/* Responsive adjustments */
+@media (max-width: 991px) {
+    .precision-image-box img { height: auto; margin-top: 20px; }
+}
+
+/* Product Card Styling */
+.flow-product-card {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.flow-product-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.flow-product-img-wrapper {
+    position: relative;
+    height: 250px;
+    overflow: hidden;
+    background: var(--light-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.flow-product-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 15px;
+    transition: transform 0.3s ease;
+}
+
+.flow-product-card:hover .flow-product-img {
+    transform: scale(1.08);
+}
+
+.flow-product-card-body {
+    padding: 20px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.flow-product-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #02204c;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.flow-product-desc {
+    font-size: 0.85rem;
+    color: #666;
+    line-height: 1.5;
+    flex-grow: 1;
+}
+
+
+        /* --- FOOTER STYLES --- */
+        .footer { background-color: var(--primary-blue); color: white; padding: 60px 0 20px; font-size: 0.85rem; }
+        .footer h5 { font-weight: 500; font-size: 1rem; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; }
+        .footer-links { list-style: none; padding: 0; margin: 0; }
+        .footer-links li { margin-bottom: 10px; }
+        .footer-links a { color: #aaa; text-decoration: none; transition: color 0.3s; }
+        .footer-links a:hover { color: white; }
+        .footer-contact i { width: 20px; color: var(--accent-blue); margin-right: 10px; flex-shrink: 0; }
+        .footer-contact p { margin-bottom: 10px; color: #aaa; display: flex; align-items: center; gap: 5px; white-space: nowrap; }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; margin-top: 40px; text-align: center; color: #777; font-size: 0.75rem; }
+
+        /* --- COMMON UTILS --- */
+        .section-padding { padding: 100px 0;
+        .dropdown-toggle::after {
+    display: none !important;
+}
+
+/* Dropdown menu ki styling thodi saaf dikhne ke liye */
+.dropdown-menu {
+    border-radius: 8px;
+    border: 1px solid #eee;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+    </style>
+<link rel="stylesheet" href="styles-3d.css">
+</head>
+
+<body ng-controller="MainCtrl">
+
+    <header>
+        <div class="top-bar py-2 d-none d-lg-block">
+            <div class="container d-flex justify-content-between">
+                <div>
+                    <span class="me-4"><i class="fas fa-phone-alt"></i> +91 87794 45970</span>
+                    <span><i class="fas fa-envelope"></i> sales@scubeindustries.com</span>
+                </div>
+                <div>
+                    <span class="me-4"><i class="fas fa-clock"></i> Mon - Sat: 9:00 AM - 6:00 PM</span>
+                    <span><i class="fas fa-map-marker-alt"></i> ATC-65, T.T.C MIDC AREA, MAHAPE, NAVI MUMBAI - 400710</span>
+                </div>
+            </div>
+        </div>
+
+          <nav class="navbar navbar-expand-lg sticky-top">
+    <div class="container">
+        <a class="navbar-brand" href="index.html" style="display:flex;align-items:center;gap:10px;"><img src="logo.png.jpeg" alt="Logo" style="height:70px;width:auto;"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mx-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home</a>
+                </li>
+                
+                <!-- About Us Dropdown -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link" href="aboutus.html" id="aboutDropdown">
+                        About Us <i class="fas fa-chevron-down ms-1" style="font-size:0.6rem;"></i>
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="aboutDropdown">
+                        <li><a class="dropdown-item" href="corporate-profile.html">Corporate Profile</a></li>
+                        <li><a class="dropdown-item" href="chairmans-desk.html">Chairman's Desk</a></li>
+                        <li><a class="dropdown-item" href="quality-policy.html">Quality Policy</a></li>
+                        <li><a class="dropdown-item" href="certification.html">Certification</a></li>
+						<li><a class="dropdown-item" href="hse.html">HSE</a></li>
+                    </ul>
+                </li>
+
+                <!-- Products Dropdown -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link active" href="products.html" id="productsDropdown">
+                        Products <i class="fas fa-chevron-down ms-1" style="font-size:0.6rem;"></i>
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="productsDropdown">
+                        <li><a class="dropdown-item" href="flow-control-equipment.html">Flow Control Equipment</a></li>
+                        <li><a class="dropdown-item" href="wireline-tools-accessories.html">Wireline Tools & Accessories</a></li>
+                        <li><a class="dropdown-item" href="pressure-control-equipment.html">Pressure Control Equipment</a></li>
+                        <li><a class="dropdown-item" href="completion-equipment.html">Completion Equipment</a></li>
+                        
+                    </ul>
+                </li>
+
+                <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+                <li class="nav-item"><a class="nav-link" href="news.html">News</a></li>
+                <li class="nav-item"><a class="nav-link" href="careers.html">Career</a></li>
+                <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+            </ul>
+            <a href="contact.html"><button class="btn btn-primary-custom">GET A QUOTE</button></a>
+        </div>
+    </div>
+</nav>
+    </header>
+    <main>
+      <section class="page-header">
+    <div class="container text-center">
+        <h1 class="page-title">Flow Control Equipment</h1>
+        <p class="page-subtitle">High-performance valves, chokes, and manifolds designed for critical oil and gas operations..</p>
+    </div>
+</section>
+    </main>
+	<section class="precision-section py-5">
+    <div class="container">
+        <div class="row g-5">
+            <div class="col-lg-7">
+                <h2 class="precision-title mb-4">PRECISION FLOW MANAGEMENT</h2>
+                <p class="precision-desc mb-5">SCUBE Industries provides top-tier flow control equipment engineered to withstand the harshest environments. Our products ensure safe, reliable, and efficient regulation of fluid flow in upstream, midstream, and downstream applications.</p>
+            </div>
+
+            <div class="col-lg-5">
+                <div class="precision-image-box">
+                    <img src="https://img.freepik.com/free-photo/shareholders-team-ensure-factory-follows-safety-procedures-before-investing_482257-119563.jpg?semt=ais_rp_50_assets&w=740&q=80">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+	
+
+<!-- Flow Control Products Section -->
+<section class="py-5" style="background-color: #f8f9fa;">
+    <div class="container">
+        <h2 style="font-size: 2.2rem; font-weight: 600; color: #02204c; margin-bottom: 50px; text-align: center; text-transform: uppercase;">Our Flow Control Products</h2>
+        
+        <div class="row g-4">
+            <div class="col-md-6 col-lg-3">
+                <div class="flow-product-card">
+                    <div class="flow-product-img-wrapper">
+                        <img src="FLOW CONTROL/Landing Nipple.jpg" class="flow-product-img" alt="Landing Nipples and Lock Mandrels">
+                    </div>
+                    <div class="flow-product-card-body">
+                        <h5 class="flow-product-title">Landing Nipples and Lock Mandrels</h5>
+                        <p class="flow-product-desc">Precision-engineered landing nipples for downhole tool positioning and well completion operations.</p>
+                        <div class="sub-categories mt-2">
+                            <a href="X-XN%20LOCK%20MANDREL%20&amp;%20LANDING%20NIPPLE.pdf" target="_blank" class="btn btn-sm btn-outline-primary d-block mb-2 text-start"><i class="fas fa-file-pdf me-2 text-danger"></i>X/XN</a>
+                            <a href="#" class="btn btn-sm btn-outline-secondary d-block mb-2 text-start"><i class="fas fa-chevron-right me-2"></i>R/RN</a>
+                            <a href="#" class="btn btn-sm btn-outline-secondary d-block text-start"><i class="fas fa-chevron-right me-2"></i>RPT</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="flow-product-card">
+                    <div class="flow-product-img-wrapper">
+                        <img src="FLOW CONTROL/RPT No-Go Landing Nipple and Lock Mandrel.png" class="flow-product-img" alt="RPT No-Go Landing Nipple and Lock Mandrel">
+                    </div>
+                    <div class="flow-product-card-body">
+                        <h5 class="flow-product-title">RPT No-Go Landing Nipple and Lock Mandrel</h5>
+                        <p class="flow-product-desc">High-quality rpt no-go landing nipple and lock mandrel engineered for reliability and optimal performance in critical operations.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="flow-product-card">
+                    <div class="flow-product-img-wrapper">
+                        <img src="FLOW CONTROL/Mode; 'F' Nipple.png" class="flow-product-img" alt="Mode; 'F' Nipple">
+                    </div>
+                    <div class="flow-product-card-body">
+                        <h5 class="flow-product-title">Mode; 'F' Nipple</h5>
+                        <p class="flow-product-desc">High-quality mode; 'f' nipple engineered for reliability and optimal performance in critical operations.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="flow-product-card">
+                    <div class="flow-product-img-wrapper">
+                        <img src="FLOW CONTROL/Model 'R' Nipple.png" class="flow-product-img" alt="Model 'R' Nipple">
+                    </div>
+                    <div class="flow-product-card-body">
+                        <h5 class="flow-product-title">Model 'R' Nipple</h5>
+                        <p class="flow-product-desc">High-quality model 'r' nipple engineered for reliability and optimal performance in critical operations.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="flow-product-card">
+                    <div class="flow-product-img-wrapper">
+                        <img src="FLOW CONTROL/Surface Controlled Subsurface Safety Valves (SSSV).png" class="flow-product-img" alt="Surface Controlled Subsurface Safety Valves (SSSV)">
+                    </div>
+                    <div class="flow-product-card-body">
+                        <h5 class="flow-product-title">Surface Controlled Subsurface Safety Valves (SSSV)</h5>
+                        <p class="flow-product-desc">High-quality surface controlled subsurface safety valves (sssv) engineered for reliability and optimal performance in critical operations.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="flow-product-card">
+                    <div class="flow-product-img-wrapper">
+                        <img src="FLOW CONTROL/Tubing Retrievable Safety Valve.jpg" class="flow-product-img" alt="Tubing Retrievable Safety Valve">
+                    </div>
+                    <div class="flow-product-card-body">
+                        <h5 class="flow-product-title">Tubing Retrievable Safety Valve</h5>
+                        <p class="flow-product-desc">High-quality tubing retrievable safety valve engineered for reliability and optimal performance in critical operations.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="flow-product-card">
+                    <div class="flow-product-img-wrapper">
+                        <img src="FLOW CONTROL/Lockout Tool.png" class="flow-product-img" alt="Lockout Tool">
+                    </div>
+                    <div class="flow-product-card-body">
+                        <h5 class="flow-product-title">Lockout Tool</h5>
+                        <p class="flow-product-desc">High-quality lockout tool engineered for reliability and optimal performance in critical operations.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="flow-product-card">
+                    <div class="flow-product-img-wrapper">
+                        <img src="FLOW CONTROL/Deformation Lockout Tool.png" class="flow-product-img" alt="Deformation Lockout Tool">
+                    </div>
+                    <div class="flow-product-card-body">
+                        <h5 class="flow-product-title">Deformation Lockout Tool</h5>
+                        <p class="flow-product-desc">High-quality deformation lockout tool engineered for reliability and optimal performance in critical operations.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="flow-product-card">
+                    <div class="flow-product-img-wrapper">
+                        <img src="FLOW CONTROL/Model PCMD and PCMU Sliding Sleeve.png" class="flow-product-img" alt="Model PCMD and PCMU Sliding Sleeve">
+                    </div>
+                    <div class="flow-product-card-body">
+                        <h5 class="flow-product-title">Model PCMD and PCMU Sliding Sleeve</h5>
+                        <p class="flow-product-desc">High-quality model pcmd and pcmu sliding sleeve engineered for reliability and optimal performance in critical operations.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="flow-product-card">
+                    <div class="flow-product-img-wrapper">
+                        <img src="FLOW CONTROL/Model PXD and PXU Sliding Sleeve.png" class="flow-product-img" alt="Model PXD and PXU Sliding Sleeve">
+                    </div>
+                    <div class="flow-product-card-body">
+                        <h5 class="flow-product-title">Model PXD and PXU Sliding Sleeve</h5>
+                        <p class="flow-product-desc">High-quality model pxd and pxu sliding sleeve engineered for reliability and optimal performance in critical operations.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="flow-product-card">
+                    <div class="flow-product-img-wrapper">
+                        <img src="FLOW CONTROL/Model 'L' Sliding Sleeve.png" class="flow-product-img" alt="Model 'L' Sliding Sleeve">
+                    </div>
+                    <div class="flow-product-card-body">
+                        <h5 class="flow-product-title">Model 'L' Sliding Sleeve</h5>
+                        <p class="flow-product-desc">High-quality model 'l' sliding sleeve engineered for reliability and optimal performance in critical operations.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="flow-product-card">
+                    <div class="flow-product-img-wrapper">
+                        <img src="FLOW CONTROL/Model 'G' Bottom Bypass Blanking Plugs.png" class="flow-product-img" alt="Model 'G' Bottom Bypass Blanking Plugs">
+                    </div>
+                    <div class="flow-product-card-body">
+                        <h5 class="flow-product-title">Model 'G' Bottom Bypass Blanking Plugs</h5>
+                        <p class="flow-product-desc">High-quality model 'g' bottom bypass blanking plugs engineered for reliability and optimal performance in critical operations.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="flow-product-card">
+                    <div class="flow-product-img-wrapper">
+                        <img src="FLOW CONTROL/Model 'FB-2' and 'RB-2' Equalizing Check Valves.png" class="flow-product-img" alt="Model 'FB-2' and 'RB-2' Equalizing Check Valves">
+                    </div>
+                    <div class="flow-product-card-body">
+                        <h5 class="flow-product-title">Model 'FB-2' and 'RB-2' Equalizing Check Valves</h5>
+                        <p class="flow-product-desc">High-quality model 'fb-2' and 'rb-2' equalizing check valves engineered for reliability and optimal performance in critical operations.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="flow-product-card">
+                    <div class="flow-product-img-wrapper">
+                        <img src="FLOW CONTROL/AF Lock Mandrel.png" class="flow-product-img" alt="AF Lock Mandrel">
+                    </div>
+                    <div class="flow-product-card-body">
+                        <h5 class="flow-product-title">AF Lock Mandrel</h5>
+                        <p class="flow-product-desc">High-quality af lock mandrel engineered for reliability and optimal performance in critical operations.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="flow-product-card">
+                    <div class="flow-product-img-wrapper">
+                        <img src="FLOW CONTROL/A Running Tool.jpg" class="flow-product-img" alt="A Running Tool">
+                    </div>
+                    <div class="flow-product-card-body">
+                        <h5 class="flow-product-title">A Running Tool</h5>
+                        <p class="flow-product-desc">High-quality a running tool engineered for reliability and optimal performance in critical operations.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="flow-product-card">
+                    <div class="flow-product-img-wrapper">
+                        <img src="FLOW CONTROL/Model 'LGK' Equalizing Check Valve Choke with Ceramic Bean.png" class="flow-product-img" alt="Model 'LGK' Equalizing Check Valve Choke with Ceramic Bean">
+                    </div>
+                    <div class="flow-product-card-body">
+                        <h5 class="flow-product-title">Model 'LGK' Equalizing Check Valve Choke with Ceramic Bean</h5>
+                        <p class="flow-product-desc">High-quality model 'lgk' equalizing check valve choke with ceramic bean engineered for reliability and optimal performance in critical operations.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="flow-product-card">
+                    <div class="flow-product-img-wrapper">
+                        <img src="FLOW CONTROL/Model 'FGK' Equalizing Check Valve Choke with Ceramic Bean.png" class="flow-product-img" alt="Model 'FGK' Equalizing Check Valve Choke with Ceramic Bean">
+                    </div>
+                    <div class="flow-product-card-body">
+                        <h5 class="flow-product-title">Model 'FGK' Equalizing Check Valve Choke with Ceramic Bean</h5>
+                        <p class="flow-product-desc">High-quality model 'fgk' equalizing check valve choke with ceramic bean engineered for reliability and optimal performance in critical operations.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="flow-product-card">
+                    <div class="flow-product-img-wrapper">
+                        <img src="FLOW CONTROL/Mode; 'LGE' Separation Sleeve.png" class="flow-product-img" alt="Mode; 'LGE' Separation Sleeve">
+                    </div>
+                    <div class="flow-product-card-body">
+                        <h5 class="flow-product-title">Mode; 'LGE' Separation Sleeve</h5>
+                        <p class="flow-product-desc">High-quality mode; 'lge' separation sleeve engineered for reliability and optimal performance in critical operations.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="flow-product-card">
+                    <div class="flow-product-img-wrapper">
+                        <img src="FLOW CONTROL/Model 'LGU' Bypass Choke.webp" class="flow-product-img" alt="Model 'LGU' Bypass Choke">
+                    </div>
+                    <div class="flow-product-card-body">
+                        <h5 class="flow-product-title">Model 'LGU' Bypass Choke</h5>
+                        <p class="flow-product-desc">High-quality model 'lgu' bypass choke engineered for reliability and optimal performance in critical operations.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="flow-product-card">
+                    <div class="flow-product-img-wrapper">
+                        <img src="FLOW CONTROL/Slip Lock Assembly.png" class="flow-product-img" alt="Slip Lock Assembly">
+                    </div>
+                    <div class="flow-product-card-body">
+                        <h5 class="flow-product-title">Slip Lock Assembly</h5>
+                        <p class="flow-product-desc">High-quality slip lock assembly engineered for reliability and optimal performance in critical operations.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="flow-product-card">
+                    <div class="flow-product-img-wrapper">
+                        <img src="FLOW CONTROL/Surge Tool Assembly.png" class="flow-product-img" alt="Surge Tool Assembly">
+                    </div>
+                    <div class="flow-product-card-body">
+                        <h5 class="flow-product-title">Surge Tool Assembly</h5>
+                        <p class="flow-product-desc">High-quality surge tool assembly engineered for reliability and optimal performance in critical operations.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="flow-product-card">
+                    <div class="flow-product-img-wrapper">
+                        <img src="FLOW CONTROL/Tubing Pack-off Anchor Assembly.jpg" class="flow-product-img" alt="Tubing Pack-off Anchor Assembly">
+                    </div>
+                    <div class="flow-product-card-body">
+                        <h5 class="flow-product-title">Tubing Pack-off Anchor Assembly</h5>
+                        <p class="flow-product-desc">High-quality tubing pack-off anchor assembly engineered for reliability and optimal performance in critical operations.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="flow-product-card">
+                    <div class="flow-product-img-wrapper">
+                        <img src="FLOW CONTROL/Control Line & Accessories.png" class="flow-product-img" alt="Control Line & Accessories">
+                    </div>
+                    <div class="flow-product-card-body">
+                        <h5 class="flow-product-title">Control Line & Accessories</h5>
+                        <p class="flow-product-desc">High-quality control line & accessories engineered for reliability and optimal performance in critical operations.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="flow-product-card">
+                    <div class="flow-product-img-wrapper">
+                        <img src="FLOW CONTROL/Completion Systems.jpg" class="flow-product-img" alt="Completion Systems">
+                    </div>
+                    <div class="flow-product-card-body">
+                        <h5 class="flow-product-title">Completion Systems</h5>
+                        <p class="flow-product-desc">High-quality completion systems engineered for reliability and optimal performance in critical operations.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="flow-product-card">
+                    <div class="flow-product-img-wrapper">
+                        <img src="FLOW CONTROL/Model 'B' downhole Instrument Hangers.png" class="flow-product-img" alt="Model 'B' downhole Instrument Hangers">
+                    </div>
+                    <div class="flow-product-card-body">
+                        <h5 class="flow-product-title">Model 'B' downhole Instrument Hangers</h5>
+                        <p class="flow-product-desc">High-quality model 'b' downhole instrument hangers engineered for reliability and optimal performance in critical operations.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</section>
+
+        <footer class="footer">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-3">
+                    <h3 style="font-weight: 500; letter-spacing: 1px; margin-bottom: 20px;">SCUBE<br><span style="font-size: 0.9rem; font-weight: 500;">INDUSTRIES</span></h3>
+                    <p style="color: #aaa;">A professionally managed company specializing in the manufacturing and servicing of high-quality oil &amp; gas equipment.</p>
+                    <div class="mt-3">
+                        <a href="#" class="text-white me-3"><i class="fab fa-linkedin fs-5"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-twitter fs-5"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-facebook fs-5"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 offset-lg-1">
+                    <h5>Explore</h5>
+                    <ul class="footer-links">
+                        <li><a href="aboutus.html">About Us</a></li>
+                        <li><a href="products.html">Our Products</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="news.html">News</a></li>
+                        <li><a href="careers.html">Career</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2">
+                    <h5>Corporate</h5>
+                    <ul class="footer-links">
+                        <li><a href="corporate-profile.html">Company Profile</a></li>
+                        <li><a href="quality-policy.html">Quality Policy</a></li>
+                        <li><a href="hse.html">HSE Policy</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 footer-contact">
+                    <h5>Get In Touch</h5>
+                    <p><i class="fas fa-map-marker-alt"></i> ATC-65, T.T.C MIDC AREA, MAHAPE, NAVI MUMBAI - 400710</p>
+                    <p><i class="fas fa-phone-alt"></i> +91 87794 45970</p>
+                    <p><i class="fas fa-envelope"></i> sales@scubeindustries.com</p>
+                    <a href="contact.html"><button class="btn btn-primary-custom mt-2 border-0" style="background-color: var(--accent-blue);">REQUEST A QUOTE <i class="fas fa-arrow-right ms-2"></i></button></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 SCUBE Industries. All Rights Reserved. </p>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script>
+        var app = angular.module('scubeApp', []);
+        app.controller('MainCtrl', function($scope) {
+            // Aapka AngularJS data yahan reh sakta hai
+        });
+    </script>
+</body>
+</html>
+

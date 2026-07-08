@@ -1,0 +1,74 @@
+/* Professional 3D Enhancements */
+
+/* Buttons */
+.btn, .btn-primary, .btn-primary-custom, .btn-light-custom, .scube-carousel-btn {
+    border-radius: 6px !important; /* Reduced radius */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1), inset 0 -3px 0 rgba(0,0,0,0.15) !important;
+    transition: all 0.3s ease !important;
+    transform: translateY(0);
+}
+
+.btn:hover, .btn-primary:hover, .btn-primary-custom:hover, .btn-light-custom:hover, .scube-carousel-btn:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15), inset 0 -3px 0 rgba(0,0,0,0.1) !important;
+}
+
+.btn:active, .btn-primary:active, .btn-primary-custom:active, .btn-light-custom:active, .scube-carousel-btn:active {
+    transform: translateY(1px) !important;
+    box-shadow: 0 2px 3px rgba(0,0,0,0.1), inset 0 1px 0 rgba(0,0,0,0.1) !important;
+}
+
+/* Cards (Products, News, Why Choose Us) */
+.card, .product-card, .news-card, .why-card, .expertise-btn, .experience-box, .strengths-box {
+    border-radius: 12px !important;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08), 0 4px 6px rgba(0, 0, 0, 0.04) !important;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+    border: 1px solid rgba(255, 255, 255, 0.8) !important;
+}
+
+.card:hover, .product-card:hover, .news-card:hover, .why-card:hover, .expertise-btn:hover {
+    transform: translateY(-8px) !important;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12), 0 8px 12px rgba(0, 0, 0, 0.06) !important;
+}
+
+/* Images & Media */
+.gallery-img, .intro-image, .product-img {
+    border-radius: 12px !important;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1) !important;
+    transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+.gallery-img:hover {
+    transform: scale(1.03) !important;
+    box-shadow: 0 12px 25px rgba(0,0,0,0.15) !important;
+}
+
+/* Dropdown Menu */
+.dropdown-menu {
+    border-radius: 12px !important;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.15), 0 5px 15px rgba(0,0,0,0.1) !important;
+    border: none !important;
+}
+
+/* Navbar */
+.navbar {
+    box-shadow: 0 4px 15px rgba(0,0,0,0.06) !important;
+}
+
+/* Forms */
+.form-control, .form-select {
+    border-radius: 6px !important;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.03) !important;
+    border: 1px solid #ced4da !important;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out !important;
+}
+
+.form-control:focus, .form-select:focus {
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.03), 0 0 0 4px rgba(2, 32, 76, 0.1) !important;
+    border-color: #02204c !important;
+}
+
+/* Global Aesthetics */
+body {
+    background-color: #fcfcfc;
+}

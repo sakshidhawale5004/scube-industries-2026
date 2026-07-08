@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="scubeApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Products | SCUBE Industries</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-blue: #02204c;
+            --secondary-blue: #06347a;
+            --accent-blue: #0047b3;
+            --light-bg: #f8f9fa;
+            --text-dark: #333;
+            --text-light: #fff;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-dark);
+            overflow-x: hidden;
+            line-height: 1.6;
+            font-size: 1rem;
+            font-weight: 400;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.2;
+        }
+        
+        p {
+            line-height: 1.6;
+        }
+
+        /* --- Top Bar --- */
+        .top-bar {
+            background-color: #fff;
+            border-bottom: 1px solid #eee;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        .top-bar i { color: var(--primary-blue); margin-right: 5px; }
+
+        /* --- Navbar --- */
+        .navbar {
+            padding: 15px 0;
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            z-index: 100;
+            position: relative;
+        }
+        .navbar-collapse {
+            overflow: visible !important;
+        }
+        .nav-item.dropdown {
+            position: relative;
+        }
+        .navbar-brand { font-weight: 800; color: var(--primary-blue); font-size: 1.8rem; }
+        .nav-link { font-size: 0.85rem; font-weight: 600; text-transform: uppercase; color: var(--primary-blue) !important; margin: 0 10px; }
+        .nav-link:hover { color: var(--accent-blue) !important; }
+        .nav-link.active { color: var(--accent-blue) !important; }
+        .dropdown-toggle::after { display: none; }
+        .dropdown-menu { 
+            border-radius: 8px; 
+            border: 1px solid #eee; 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            position: absolute;
+            top: 100% !important;
+            left: 0;
+            display: none;
+            min-width: 200px;
+            z-index: 1000;
+        }
+        .nav-item.dropdown:hover .dropdown-menu { display: block; }
+        .dropdown-item { 
+            color: var(--primary-blue); 
+            font-size: 0.85rem; 
+            padding: 10px 20px;
+        }
+        .dropdown-item:hover { 
+            background-color: #f0f4f8; 
+            color: var(--accent-blue);
+        }
+        .btn-primary-custom {
+            background-color: var(--primary-blue);
+            color: white;
+            border-radius: 0;
+            font-weight: 600;
+            padding: 10px 24px;
+            font-size: 0.85rem;
+            border: 2px solid var(--primary-blue);
+            transition: all 0.3s ease;
+        }
+        .btn-primary-custom:hover { background-color: transparent; color: var(--primary-blue); }
+
+        /* --- Page Header --- */
+        .page-header {
+            background: linear-gradient(to right, rgba(2, 32, 76, 0.95) 0%, rgba(2, 32, 76, 0.7) 100%), url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+        .page-header h1 { font-family: 'Montserrat', sans-serif !important; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; font-size: 3rem; }
+        .page-header p { font-family: 'Montserrat', sans-serif !important; font-weight: 500; font-size: 1.1rem; opacity: 0.9; }
+
+        /* --- Section Styles --- */
+        .section-subtitle { font-family: 'Montserrat', sans-serif; font-size: 0.75rem; font-weight: 700; color: #777; letter-spacing: 2px; text-transform: uppercase; position: relative; display: inline-block; padding-left: 40px; }
+        .section-subtitle::before { content: ''; position: absolute; left: 0; top: 50%; width: 30px; height: 1px; background-color: #777; }
+        .section-title { font-family: 'Montserrat', sans-serif; font-size: 2rem; font-weight: 800; color: var(--primary-blue); margin-bottom: 20px; text-transform: uppercase; }
+
+        /* --- Section Styles --- */
+        .section-subtitle { font-size: 0.75rem; font-weight: 700; color: #777; letter-spacing: 2px; text-transform: uppercase; position: relative; display: inline-block; padding-left: 40px; }
+        .section-subtitle::before { content: ''; position: absolute; left: 0; top: 50%; width: 30px; height: 1px; background-color: #777; }
+        .section-title { font-size: 2rem; font-weight: 800; color: var(--primary-blue); margin-bottom: 20px; text-transform: uppercase; }
+
+        /* --- Product Categories --- */
+        .category-filter {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+        }
+        .category-btn {
+            background: white;
+            border: 2px solid var(--primary-blue);
+            color: var(--primary-blue);
+            padding: 10px 25px;
+            border-radius: 0;
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+        }
+        .category-btn:hover,
+        .category-btn.active {
+            background: var(--primary-blue);
+            color: white;
+        }
+
+        /* --- Product Card --- */
+        .product-card {
+            background: #fff;
+            border: none;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            border-radius: 0;
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        .product-img-wrapper {
+            position: relative;
+            height: 220px;
+            overflow: hidden;
+            background: var(--light-bg);
+        }
+        .product-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        .product-card:hover .product-img {
+            transform: scale(1.05);
+        }
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--accent-blue);
+            color: white;
+            padding: 5px 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            border-radius: 20px;
+            text-transform: uppercase;
+        }
+        .product-card-body {
+            padding: 25px;
+        }
+        .product-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .product-desc {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+        .product-specs {
+            font-size: 0.8rem;
+            color: #999;
+            margin-bottom: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+        }
+        .product-specs span {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .product-specs strong {
+            color: var(--primary-blue);
+        }
+        .product-btn {
+            background: var(--primary-blue);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 100%;
+            text-transform: uppercase;
+            border-radius: 0;
+        }
+        .product-btn:hover {
+            background: var(--accent-blue);
+            color: white;
+        }
+
+        /* --- Category Section Headers --- */
+        .category-section {
+            margin-bottom: 60px;
+        }
+        .category-section-title {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary-blue);
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent-blue);
+            text-transform: uppercase;
+        }
+
+        /* --- CTA Banner --- */
+        .cta-banner {
+            background: var(--secondary-blue);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+            margin: 60px 0;
+        }
+        .cta-banner h2 {
+            font-weight: 800;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+        .cta-banner p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+        }
+        .btn-light-custom {
+            background-color: white;
+            color: var(--primary-blue);
+            border: 2px solid white;
+            padding: 12px 30px;
+            font-weight: 600;
+            border-radius: 0;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            transition: all 0.3s;
+        }
+        .btn-light-custom:hover {
+            background-color: transparent;
+            color: white;
+        }
+
+        /* --- Footer --- */
+        .footer {
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 60px 0 20px;
+            font-size: 0.85rem;
+            margin-top: 80px;
+        }
+        .footer h5 { font-weight: 700; font-size: 1rem; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; }
+        .footer-links { list-style: none; padding: 0; margin: 0; }
+        .footer-links li { margin-bottom: 10px; }
+        .footer-links a { color: #aaa; text-decoration: none; transition: color 0.3s; }
+        .footer-links a:hover { color: white; }
+        .footer-contact i { width: 20px; color: var(--accent-blue); margin-right: 10px; flex-shrink: 0; }
+        .footer-contact p { margin-bottom: 10px; color: #aaa; display: flex; align-items: center; gap: 5px; white-space: nowrap; }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; margin-top: 40px; text-align: center; color: #777; font-size: 0.75rem; }
+    </style>
+</head>
+<body ng-controller="ProductCtrl">
+
+    <div class="top-bar py-2 d-none d-lg-block">
+        <div class="container d-flex justify-content-between">
+            <div>
+                <span class="me-4"><i class="fas fa-phone-alt"></i> +91 87794 45970</span>
+                <span><i class="fas fa-envelope"></i> sales@scubeindustries.com</span>
+            </div>
+            <div>
+                <span class="me-4"><i class="fas fa-clock"></i> Mon - Sat: 9:00 AM - 6:00 PM</span>
+                <span><i class="fas fa-map-marker-alt"></i> ATC-65, T.T.C MIDC AREA, MAHAPE, NAVI MUMBAI - 400710</span>
+            </div>
+        </div>
+    </div>
+
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html" style="display:flex;align-items:center;gap:10px;"><img src="logo.png.jpeg" alt="Logo" style="height:70px;width:auto;"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" href="aboutus.html" id="aboutDropdown">
+                            About Us <i class="fas fa-chevron-down ms-1" style="font-size:0.6rem;"></i>
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="aboutDropdown">
+                            <li><a class="dropdown-item" href="corporate-profile.html">Corporate Profile</a></li>
+                            <li><a class="dropdown-item" href="chairmans-desk.html">Chairman's Desk</a></li>
+                            <li><a class="dropdown-item" href="quality-policy.html">Quality Policy</a></li>
+                            <li><a class="dropdown-item" href="certification.html">Certification</a></li>
+                            <li><a class="dropdown-item" href="hse.html">HSE</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link active" href="products.html" id="productsDropdown">
+                            Products <i class="fas fa-chevron-down ms-1" style="font-size:0.6rem;"></i>
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="productsDropdown">
+                            <li><a class="dropdown-item" href="flow-control-equipment.html">Flow Control Equipment</a></li>
+                            <li><a class="dropdown-item" href="wireline-tools-accessories.html">Wireline Tools & Accessories</a></li>
+                            <li><a class="dropdown-item" href="coiled-tubing-tools.html">Coiled Tubing Tools</a></li>
+                            <li><a class="dropdown-item" href="completion-equipment.html">Completion Equipment</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="news.html">News</a></li>
+                    <li class="nav-item"><a class="nav-link" href="careers.html">Career</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+                </ul>
+                <a href="contact.html"><button class="btn btn-primary-custom">GET A QUOTE</button></a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <div class="container">
+            <h1 style="font-family: 'Montserrat', sans-serif !important;">Our Products</h1>
+            <p>Premium Engineering Solutions for Oil & Gas Applications</p>
+        </div>
+    </header>
+
+    <!-- Products Section -->
+    <section class="py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <span class="section-subtitle">Precision Engineered</span>
+                <h2 class="section-title">Core Product Range</h2>
+                <p class="text-muted" style="max-width: 600px; margin: 20px auto;">Our comprehensive portfolio of products is designed to meet the demanding requirements of the oil and gas industry with superior quality and reliability.</p>
+            </div>
+
+            <!-- Category Filters -->
+            <div class="category-filter">
+                <button class="category-btn active" ng-click="filterCategory('all')">All Products</button>
+                <button class="category-btn" ng-click="filterCategory('wireline')">Wireline Tools</button>
+                <button class="category-btn" ng-click="filterCategory('coiled')">Coiled Tubing</button>
+                <button class="category-btn" ng-click="filterCategory('completion')">Completion Equipment</button>
+                <button class="category-btn" ng-click="filterCategory('flow')">Flow Control</button>
+            </div>
+
+            <!-- Products Grid Display -->
+            <div ng-repeat="(category, items) in productsByCategory" ng-show="showCategory(category)" class="category-section">
+                <h3 class="category-section-title">{{category | uppercase}}</h3>
+                <div class="row g-4">
+                    <div class="col-md-6 col-lg-4" ng-repeat="product in items">
+                        <div class="card product-card">
+                            <div class="product-img-wrapper">
+                                <img ng-src="{{product.image}}" class="product-img" alt="{{product.title}}">
+                                <span class="product-badge" ng-if="product.badge">{{product.badge}}</span>
+                            </div>
+                            <div class="product-card-body">
+                                <h5 class="product-title">{{product.title}}</h5>
+                                <p class="product-desc">{{product.desc}}</p>
+                                <div class="product-specs">
+                                    <span ng-repeat="spec in product.specs"><strong>{{spec.label}}:</strong> {{spec.value}}</span>
+                                </div>
+                                <button class="product-btn" ng-click="viewProduct(product)">View Details</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Banner -->
+    <section class="cta-banner">
+        <div class="container">
+            <h2>Need a Custom Solution?</h2>
+            <p>Our engineering team can design tailored products to meet your specific requirements.</p>
+            <a href="contact.html"><button class="btn btn-light-custom">Request Custom Quote <i class="fas fa-arrow-right ms-2"></i></button></a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-3">
+                    <h3 style="font-weight: 800; letter-spacing: 1px; margin-bottom: 20px;">SCUBE<br><span style="font-size: 0.9rem; font-weight: 500;">INDUSTRIES</span></h3>
+                    <p style="color: #aaa;">A professionally managed company specializing in the manufacturing and servicing of high-quality oil & gas equipment.</p>
+                    <div class="mt-3">
+                        <a href="#" class="text-white me-3"><i class="fab fa-linkedin fs-5"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-twitter fs-5"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-facebook fs-5"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 offset-lg-1">
+                    <h5>Explore</h5>
+                    <ul class="footer-links">
+                        <li><a href="aboutus.html">About Us</a></li>
+                        <li><a href="products.html">Our Products</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="news.html">News</a></li>
+                        <li><a href="careers.html">Career</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2">
+                    <h5>Corporate</h5>
+                    <ul class="footer-links">
+                        <li><a href="corporate-profile.html">Company Profile</a></li>
+                        <li><a href="quality-policy.html">Quality Policy</a></li>
+                        <li><a href="hse.html">HSE Policy</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 footer-contact">
+                    <h5>Get In Touch</h5>
+                    <p><i class="fas fa-map-marker-alt"></i> ATC-65, T.T.C MIDC AREA, MAHAPE, NAVI MUMBAI - 400710</p>
+                    <p><i class="fas fa-phone-alt"></i> +91 87794 45970</p>
+                    <p><i class="fas fa-envelope"></i> sales@scubeindustries.com</p>
+                    <a href="contact.html"><button class="btn btn-primary-custom mt-2 border-0" style="background-color: var(--accent-blue);">REQUEST A QUOTE <i class="fas fa-arrow-right ms-2"></i></button></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 SCUBE Industries. All Rights Reserved. </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    
+    <script>
+        var app = angular.module('scubeApp', []);
+        
+        app.controller('ProductCtrl', function($scope) {
+            
+            $scope.selectedCategory = 'all';
+
+            // Products Data organized by category
+            $scope.productsByCategory = {
+                'wireline': [
+                    {
+                        title: 'Slickline Tools',
+                        desc: 'High-performance slickline tools for efficient well services and interventions.',
+                        image: 'https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=400&q=80',
+                        badge: 'Premium',
+                        specs: [
+                            { label: 'Rating', value: 'API Certified' },
+                            { label: 'Material', value: 'High-tensile Steel' },
+                            { label: 'Pressure', value: '10,000 PSI' }
+                        ]
+                    },
+                    {
+                        title: 'Braided Line Tools',
+                        desc: 'Specialized tools for braided line applications in demanding well environments.',
+                        image: 'https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=400&q=80',
+                        specs: [
+                            { label: 'Rating', value: 'NACE MR-01-75' },
+                            { label: 'Breaking', value: '3,500 kg' },
+                            { label: 'Diameter', value: '1.25 - 1.75 inch' }
+                        ]
+                    },
+                    {
+                        title: 'Wireline Accelerators',
+                        desc: 'Advanced acceleration tools to enhance wireline operation efficiency.',
+                        image: 'https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=400&q=80',
+                        badge: 'New',
+                        specs: [
+                            { label: 'Design', value: 'Streamlined Geometry' },
+                            { label: 'Temperature', value: 'Up to 250°C' },
+                            { label: 'Compatibility', value: 'All Cable Types' }
+                        ]
+                    }
+                ],
+                'coiled': [
+                    {
+                        title: 'Coiled Tubing Units',
+                        desc: 'Precision-engineered coiled tubing for well intervention operations.',
+                        image: 'https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&w=400&q=80',
+                        specs: [
+                            { label: 'OD Range', value: '0.85 - 1.5 inch' },
+                            { label: 'Rating', value: 'API 6A' },
+                            { label: 'Working Pressure', value: '15,000 PSI' }
+                        ]
+                    },
+                    {
+                        title: 'CT Drilling Tools',
+                        desc: 'Specialized tools for coiled tubing drilling applications.',
+                        image: 'https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&w=400&q=80',
+                        specs: [
+                            { label: 'Design', value: 'Compact Profile' },
+                            { label: 'Torque', value: 'Up to 5,000 Nm' },
+                            { label: 'Material', value: 'Alloy Steel' }
+                        ]
+                    },
+                    {
+                        title: 'Injector Heads',
+                        desc: 'Heavy-duty injector heads for coiled tubing deployment systems.',
+                        image: 'https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&w=400&q=80',
+                        badge: 'Bestseller',
+                        specs: [
+                            { label: 'Load Rating', value: '250 Tons' },
+                            { label: 'Speed', value: '0-60 SPM' }
+                        ]
+                    }
+                ],
+                'completion': [
+                    {
+                        title: 'Completion Packers',
+                        desc: 'Reliable packer systems for well completion and production optimization.',
+                        image: 'https://images.unsplash.com/photo-1531604250646-2f0e818c4f06?auto=format&fit=crop&w=400&q=80',
+                        specs: [
+                            { label: 'Seal Type', value: 'Elastomer' },
+                            { label: 'Temperature', value: '120 - 175°C' },
+                            { label: 'Setting Method', value: 'Hydraulic/Mechanical' }
+                        ]
+                    },
+                    {
+                        title: 'Screen Assemblies',
+                        desc: 'Advanced sand control screen assemblies for production wells.',
+                        image: 'https://images.unsplash.com/photo-1531604250646-2f0e818c4f06?auto=format&fit=crop&w=400&q=80',
+                        specs: [
+                            { label: 'Micron Rating', value: '40 - 200' },
+                            { label: 'Diameter', value: '2-7 inch' },
+                            { label: 'Design', value: 'Wire-wrapped' }
+                        ]
+                    },
+                    {
+                        title: 'Tubing Hangers',
+                        desc: 'High-performance tubing hangers for subsea and onshore applications.',
+                        image: 'https://images.unsplash.com/photo-1531604250646-2f0e818c4f06?auto=format&fit=crop&w=400&q=80',
+                        badge: 'Premium',
+                        specs: [
+                            { label: 'Capacity', value: '500 - 2000 Tons' },
+                            { label: 'Bore Diameter', value: '4.5 - 13.5 inch' }
+                        ]
+                    }
+                ],
+                'flow': [
+                    {
+                        title: 'Control Valves',
+                        desc: 'Precision control valves for fluid management and well control.',
+                        image: 'https://images.unsplash.com/photo-1513828583688-c52646db42da?auto=format&fit=crop&w=400&q=80',
+                        specs: [
+                            { label: 'Rating', value: 'ANSI 150-600' },
+                            { label: 'Size', value: '1-6 inch' },
+                            { label: 'Actuation', value: 'Pneumatic/Hydraulic' }
+                        ]
+                    },
+                    {
+                        title: 'Check Valves',
+                        desc: 'Reliable one-way flow check valves for wellhead systems.',
+                        image: 'https://images.unsplash.com/photo-1513828583688-c52646db42da?auto=format&fit=crop&w=400&q=80',
+                        specs: [
+                            { label: 'Design', value: 'Ball/Poppet' },
+                            { label: 'Pressure Range', value: 'Up to 10,000 PSI' },
+                            { label: 'Connection', value: 'Flanged/Threaded' }
+                        ]
+                    },
+                    {
+                        title: 'Flow Meters',
+                        desc: 'Precision flow measurement instruments for production monitoring.',
+                        image: 'https://images.unsplash.com/photo-1513828583688-c52646db42da?auto=format&fit=crop&w=400&q=80',
+                        badge: 'New',
+                        specs: [
+                            { label: 'Technology', value: 'Turbine/Electromagnetic' },
+                            { label: 'Accuracy', value: '±1%' },
+                            { label: 'Digital Output', value: '4-20mA' }
+                        ]
+                    }
+                ]
+            };
+
+            // Filter category function
+            $scope.filterCategory = function(category) {
+                $scope.selectedCategory = category;
+            };
+
+            // Show category function
+            $scope.showCategory = function(category) {
+                if ($scope.selectedCategory === 'all') {
+                    return true;
+                }
+                return category === $scope.selectedCategory ? category : null;
+            };
+
+            // View product details
+            $scope.viewProduct = function(product) {
+                alert('Product: ' + product.title + '\n\n' + product.desc + '\n\nFor detailed specifications, please contact our sales team.');
+            };
+
+            // Flatten all products for 'all' category view
+            $scope.allProducts = [];
+            angular.forEach($scope.productsByCategory, function(products) {
+                $scope.allProducts = $scope.allProducts.concat(products);
+            });
+        });
+    </script>
+</body>
+</html>

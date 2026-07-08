@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="scubeApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Careers | SCUBE Industries</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-blue: #02204c;
+            --secondary-blue: #06347a;
+            --accent-blue: #0047b3;
+            --light-bg: #f8f9fa;
+            --text-dark: #333;
+        }
+
+        body { font-family: 'Montserrat', sans-serif; color: var(--text-dark); overflow-x: hidden; font-weight: 400; }
+
+        /* --- HEADER & NAVIGATION --- */
+        .top-bar { background-color: #fff; border-bottom: 1px solid #eee; font-size: 0.8rem; font-weight: 500; }
+        .top-bar i { color: var(--primary-blue); margin-right: 5px; }
+
+        .navbar { padding: 15px 0; background-color: #fff; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        .navbar-brand { font-weight: 800; color: var(--primary-blue); font-size: 1.8rem; line-height: 1; text-decoration: none; }
+        .navbar-brand span { display: block; font-size: 0.8rem; font-weight: 500; letter-spacing: 2px; }
+        .nav-link { font-size: 0.85rem; font-weight: 600; text-transform: uppercase; color: var(--primary-blue) !important; margin: 0 10px; }
+        .nav-link.active { color: var(--accent-blue) !important; }
+
+        .btn-primary-custom {
+            background-color: var(--primary-blue); color: white; border-radius: 0; font-weight: 600;
+            padding: 10px 24px; font-size: 0.85rem; border: 2px solid var(--primary-blue); transition: all 0.3s ease;
+        }
+        .btn-primary-custom:hover { background-color: transparent; color: var(--primary-blue); }
+
+        .dropdown-toggle::after { display: none !important; }
+        .dropdown-menu { border-radius: 8px; border: 1px solid #eee; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+
+        /* --- CAREERS BANNER --- */
+        .careers-banner {
+            background: linear-gradient(rgba(2, 32, 76, 0.85), rgba(2, 32, 76, 0.85)), 
+                        url('https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1400&q=80');
+            background-size: cover; background-position: center;
+            color: white; padding: 100px 0; text-align: center;
+        }
+        .careers-banner h1 { font-weight: 800; text-transform: uppercase; letter-spacing: 2px; font-size: 3rem; }
+
+        /* --- BENEFIT CARDS --- */
+        .benefit-card { padding: 20px; transition: 0.3s; }
+        .benefit-icon { 
+            width: 50px; height: 50px; background: #eef2f7; 
+            color: var(--accent-blue); display: flex; align-items: center; 
+            justify-content: center; border-radius: 8px; margin-bottom: 15px; font-size: 1.5rem;
+        }
+        .benefit-card h6 { font-weight: 700; color: var(--primary-blue); }
+        .benefit-card p { font-size: 0.85rem; color: #666; }
+
+        /* --- APPLICATION FORM --- */
+        .form-container {
+            background: #fff; padding: 40px; border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1); border-top: 5px solid var(--accent-blue);
+        }
+        .form-label { font-size: 0.75rem; font-weight: 700; color: var(--primary-blue); text-transform: uppercase; }
+        .form-control, .form-select { border-radius: 0; border: 1px solid #ddd; padding: 12px; font-size: 0.9rem; }
+        .form-control:focus { border-color: var(--accent-blue); box-shadow: none; }
+        
+        .btn-submit {
+            background: var(--primary-blue); color: white; border: none;
+            width: 100%; padding: 12px; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 1px; transition: 0.3s;
+        }
+        .btn-submit:hover { background: var(--accent-blue); }
+
+        /* --- FOOTER --- */
+        .footer { background-color: var(--primary-blue); color: white; padding: 60px 0 20px; font-size: 0.85rem; }
+        .footer h5 { font-weight: 700; margin-bottom: 20px; text-transform: uppercase; }
+        .footer-links { list-style: none; padding: 0; margin: 0; }
+        .footer-links a { color: #aaa; text-decoration: none; transition: 0.3s; }
+        .footer-links a:hover { color: white; }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; margin-top: 40px; text-align: center; color: #777; }
+    </style>
+</head>
+<body ng-controller="CareerCtrl">
+
+    <header>
+        <div class="top-bar py-2 d-none d-lg-block">
+            <div class="container d-flex justify-content-between">
+                <div>
+                    <span class="me-4"><i class="fas fa-phone-alt"></i> +91 123 456 7890</span>
+                    <span><i class="fas fa-envelope"></i> info@scubeindustries.com</span>
+                </div>
+                <div>
+                    <span class="me-4"><i class="fas fa-clock"></i> Mon - Sat: 9:00 AM - 6:00 PM</span>
+                    <span><i class="fas fa-map-marker-alt"></i> ATC-65, T.T.C MIDC AREA, MAHAPE, NAVI MUMBAI - 400710</span>
+                </div>
+            </div>
+        </div>
+
+        <nav class="navbar navbar-expand-lg sticky-top">
+            <div class="container">
+                <a class="navbar-brand" href="index.html" style="display:flex;align-items:center;gap:10px;"><img src="logo.png.jpeg" alt="Logo" style="height:70px;width:auto;"></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav mx-auto">
+                        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" href="aboutus.html">
+                                About Us <i class="fas fa-chevron-down ms-1" style="font-size:0.6rem;"></i>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="corporate-profile.html">Corporate Profile</a></li>
+                                <li><a class="dropdown-item" href="chairmans-desk.html">Chairman's Desk</a></li>
+                                <li><a class="dropdown-item" href="quality-policy.html">Quality Policy</a></li>
+                                <li><a class="dropdown-item" href="certification.html">Certification</a></li>
+                                <li><a class="dropdown-item" href="hse.html">HSE</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" href="products.html">
+                                Products <i class="fas fa-chevron-down ms-1" style="font-size:0.6rem;"></i>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="flow-control-equipment.html">Flow Control Equipment</a></li>
+                                <li><a class="dropdown-item" href="wireline-tools-accessories.html">Wireline Tools & Accessories</a></li>
+                                <li><a class="dropdown-item" href="coiled-tubing-tools.html">Coiled Tubing Tools</a></li>
+                                <li><a class="dropdown-item" href="completion-equipment.html">Completion Equipment</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+                        <li class="nav-item"><a class="nav-link" href="news.html">News</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="careers.html">Career</a></li>
+                        <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+                    </ul>
+                    <a href="contact.html"><button class="btn btn-primary-custom">GET A QUOTE</button></a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <header class="careers-banner">
+        <div class="container">
+            <h1>Join Our Team</h1>
+            <p class="opacity-75 lead">Innovation and engineering excellence start with the right people.</p>
+        </div>
+    </header>
+
+    <section class="container py-5 mt-5">
+        <div class="row g-5">
+            <div class="col-lg-6">
+                <h6 class="text-primary fw-bold mb-3">WHY WORK WITH US?</h6>
+                <h2 class="fw-bold mb-4" style="color:var(--primary-blue)">Build Your Career with an Industry Leader</h2>
+                <p class="text-muted mb-5">At SCUBE Industries, we provide a platform for engineers and professionals to thrive in a high-tech manufacturing environment.</p>
+                
+                <div class="row g-4">
+                    <div class="col-sm-6" ng-repeat="benefit in benefits">
+                        <div class="benefit-card">
+                            <div class="benefit-icon"><i class="{{benefit.icon}}"></i></div>
+                            <h6>{{benefit.title}}</h6>
+                            <p>{{benefit.desc}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="form-container">
+                    <h4 class="fw-bold mb-4">APPLY NOW</h4>
+                    <form id="careersForm" method="POST" action="api/careers.php" enctype="multipart/form-data">
+                        <div class="mb-3">
+                            <label class="form-label">Full Name</label>
+                            <input type="text" name="fullName" class="form-control" placeholder="Enter your name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Email Address</label>
+                            <input type="email" name="email" class="form-control" placeholder="example@mail.com" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Position Applied For</label>
+                            <select name="position" class="form-select" required>
+                                <option value="" selected disabled>Select a position</option>
+                                <option>CNC Operator</option>
+                                <option>Design Engineer</option>
+                                <option>Quality Inspector</option>
+                                <option>Sales Executive</option>
+                            </select>
+                        </div>
+                        <div class="mb-4">
+                            <label class="form-label">Resume Link (GDrive/Dropbox)</label>
+                            <input type="url" name="resumeLink" class="form-control" placeholder="https://" required>
+                        </div>
+                        <button type="submit" class="btn-submit">Submit Application</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-3">
+                    <h3 style="font-weight: 800; letter-spacing: 1px; margin-bottom: 20px;">SCUBE<br><span style="font-size: 0.9rem; font-weight: 500;">INDUSTRIES</span></h3>
+                    <p style="color: #aaa;">A professionally managed company specializing in high-quality equipment manufacturing.</p>
+                    <div class="mt-3">
+                        <a href="#" class="text-white me-3"><i class="fab fa-linkedin fs-5"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-twitter fs-5"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-facebook fs-5"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 offset-lg-1">
+                    <h5>Explore</h5>
+                    <ul class="footer-links">
+                        <li><a href="aboutus.html">About Us</a></li>
+                        <li><a href="products.html">Our Products</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="careers.html">Career</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2">
+                    <h5>Corporate</h5>
+                    <ul class="footer-links">
+                        <li><a href="corporate-profile.html">Company Profile</a></li>
+                        <li><a href="quality-policy.html">Quality Policy</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 footer-contact">
+                    <h5>Get In Touch</h5>
+                    <p class="opacity-75"><i class="fas fa-map-marker-alt me-2"></i> ATC-65, T.T.C MIDC AREA, MAHAPE, NAVI MUMBAI - 400710</p>
+                    <p class="opacity-75"><i class="fas fa-phone-alt me-2"></i> +91 87794 45970</p>
+                    <p class="opacity-75"><i class="fas fa-envelope me-2"></i> sales@scubeindustries.com</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 SCUBE Industries. All Rights Reserved. </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script>
+        angular.module('scubeApp', []).controller('CareerCtrl', function($scope) {
+            $scope.benefits = [
+                { title: 'Learning Opportunities', icon: 'fas fa-book-open', desc: 'Continuous training and development programs.' },
+                { title: 'Industrial Exposure', icon: 'fas fa-industry', desc: 'Work with the latest CNC and fabrication tech.' },
+                { title: 'Supportive Environment', icon: 'fas fa-users', desc: 'A collaborative and inclusive work culture.' },
+                { title: 'Career Growth', icon: 'fas fa-trending-up', desc: 'Clear pathways for career advancement.' }
+            ];
+
+            $scope.submitApplication = function() {
+                alert("Thank you for applying! Our HR team will review your profile and get back to you.");
+            };
+        });
+
+        // Handle careers form submission
+        document.addEventListener('DOMContentLoaded', function() {
+            const careersForm = document.getElementById('careersForm');
+            if (careersForm) {
+                careersForm.addEventListener('submit', async function(e) {
+                    e.preventDefault();
+                    
+                    const formData = new FormData(careersForm);
+
+                    try {
+                        const response = await fetch('api/careers.php', {
+                            method: 'POST',
+                            body: formData
+                        });
+
+                        const data = await response.json();
+
+                        if (response.ok) {
+                            alert('Thank you for applying! Our HR team will review your profile and get back to you.');
+                            careersForm.reset();
+                        } else {
+                            alert('Error: ' + (data.error || 'Failed to submit application'));
+                        }
+                    } catch (error) {
+                        console.error('Error:', error);
+                        alert('Failed to submit application. Please try again.');
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
