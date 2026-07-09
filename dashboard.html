@@ -632,6 +632,76 @@
             document.getElementById(viewId + '-view').classList.add('active');
             element.classList.add('active');
         }
+
+        // --- LOAD DATA FROM LOCALSTORAGE ---
+        function loadDashboardData() {
+            const messages = JSON.parse(localStorage.getItem('scube_contact_messages')) || [];
+            const apps = JSON.parse(localStorage.getItem('scube_career_apps')) || [];
+
+            // 1. Load Contact Messages
+            const messagesTbody = document.querySelector('#messages-view tbody');
+            if (messages.length > 0) {
+                messagesTbody.innerHTML = ''; // Clear empty state
+                messages.forEach(msg => {
+                    const tr = document.createElement('tr');
+                    tr.innerHTML = `
+                        <td><strong>${msg.date}</strong></td>
+                        <td><strong>${msg.name}</strong><br><small class="text-muted">${msg.email}<br>${msg.phone}</small></td>
+                        <td><span class="badge bg-primary bg-opacity-10 text-primary px-3 py-2 rounded-pill">${msg.subject}</span></td>
+                        <td><p class="mb-0 text-truncate" style="max-width: 250px;" title="${msg.message}">${msg.message}</p></td>
+                    `;
+                    messagesTbody.appendChild(tr);
+                });
+            }
+
+            // 2. Load Career Applications
+            const appsTbody = document.querySelector('#applications-view tbody');
+            if (apps.length > 0) {
+                appsTbody.innerHTML = ''; // Clear empty state
+                apps.forEach(app => {
+                    const tr = document.createElement('tr');
+                    tr.innerHTML = `
+                        <td><strong>${app.date}</strong></td>
+                        <td><strong>${app.name}</strong></td>
+                        <td><small class="text-muted">${app.email}<br>${app.phone}</small></td>
+                        <td><span class="badge bg-success bg-opacity-10 text-success px-3 py-2 rounded-pill">${app.position}</span></td>
+                        <td>${app.location}</td>
+                        <td><span class="badge bg-secondary">Sent via WhatsApp</span></td>
+                    `;
+                    appsTbody.appendChild(tr);
+                });
+            }
+
+            // 3. Update Overview
+            const overviewContainer = document.querySelector('#overview-view .empty-state').parentElement;
+            if (messages.length > 0 || apps.length > 0) {
+                overviewContainer.innerHTML = `
+                    <div class="row g-4 p-4">
+                        <div class="col-md-6">
+                            <div class="p-4 rounded-4" style="background: linear-gradient(135deg, rgba(2,32,76,0.05), rgba(0,71,179,0.05)); border: 1px solid var(--border-color);">
+                                <div class="d-flex align-items-center justify-content-between mb-3">
+                                    <h5 class="mb-0 fw-bold text-primary">Total Messages</h5>
+                                    <div class="p-3 bg-white rounded-circle shadow-sm text-primary"><i class="fas fa-envelope fs-4"></i></div>
+                                </div>
+                                <h2 class="display-4 fw-bold mb-0">${messages.length}</h2>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="p-4 rounded-4" style="background: linear-gradient(135deg, rgba(25,135,84,0.05), rgba(32,201,151,0.05)); border: 1px solid var(--border-color);">
+                                <div class="d-flex align-items-center justify-content-between mb-3">
+                                    <h5 class="mb-0 fw-bold text-success">Total Applications</h5>
+                                    <div class="p-3 bg-white rounded-circle shadow-sm text-success"><i class="fas fa-user-tie fs-4"></i></div>
+                                </div>
+                                <h2 class="display-4 fw-bold mb-0">${apps.length}</h2>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+        }
+
+        // Initialize data on load
+        document.addEventListener('DOMContentLoaded', loadDashboardData);
     </script>
 </body>
 </html>

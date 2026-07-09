@@ -298,12 +298,26 @@
                     const subject = formData.get('subject') || '';
                     const message = formData.get('message') || '';
                     
+                    // --- Save to LocalStorage for Dashboard ---
+                    const newSubmission = {
+                        date: new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }),
+                        name: firstName + ' ' + lastName,
+                        email: email,
+                        phone: phone,
+                        subject: subject,
+                        message: message
+                    };
+                    let existingMessages = JSON.parse(localStorage.getItem('scube_contact_messages')) || [];
+                    existingMessages.unshift(newSubmission);
+                    localStorage.setItem('scube_contact_messages', JSON.stringify(existingMessages));
+                    // ------------------------------------------
+
                     const whatsappText = `*New Contact Inquiry*\n\n*Name:* ${firstName} ${lastName}\n*Email:* ${email}\n*Phone:* ${phone}\n*Subject:* ${subject}\n*Message:* ${message}`;
                     
                     const whatsappUrl = `https://wa.me/918779445970?text=${encodeURIComponent(whatsappText)}`;
                     window.open(whatsappUrl, '_blank');
                     
-                    alert('Redirecting to WhatsApp to send your message!');
+                    alert('Redirecting to WhatsApp to send your message! (Submission also saved to Dashboard)');
                     contactForm.reset();
                 });
             }

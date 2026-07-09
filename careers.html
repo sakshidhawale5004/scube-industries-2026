@@ -286,12 +286,26 @@
                     const location = formData.get('location') || '';
                     const position = formData.get('position') || '';
                     
+                    // --- Save to LocalStorage for Dashboard ---
+                    const newApplication = {
+                        date: new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }),
+                        name: fullName,
+                        email: email,
+                        phone: phone,
+                        location: location,
+                        position: position
+                    };
+                    let existingApps = JSON.parse(localStorage.getItem('scube_career_apps')) || [];
+                    existingApps.unshift(newApplication);
+                    localStorage.setItem('scube_career_apps', JSON.stringify(existingApps));
+                    // ------------------------------------------
+
                     const whatsappText = `*New Job Application*\n\n*Name:* ${fullName}\n*Email:* ${email}\n*Phone:* ${phone}\n*Location:* ${location}\n*Position Applied For:* ${position}\n\n_Note: Please ask the applicant to attach their PDF resume directly in this chat._`;
                     
                     const whatsappUrl = `https://wa.me/918779445970?text=${encodeURIComponent(whatsappText)}`;
                     window.open(whatsappUrl, '_blank');
                     
-                    alert('Redirecting to WhatsApp to submit your application! Please attach your PDF resume directly in the WhatsApp chat.');
+                    alert('Redirecting to WhatsApp to submit your application! Please attach your PDF resume directly in the WhatsApp chat. (Application saved to Dashboard)');
                     careersForm.reset();
                 });
             }
