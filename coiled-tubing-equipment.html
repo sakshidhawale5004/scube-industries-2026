@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SCUBE Industries | Engineering Excellence</title>
+    <title>Coiled Tubing Equipment - SCUBE Industries</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -19,37 +19,37 @@
             --text-light: #fff;
         }
 
-        body { font-family: 'Montserrat', sans-serif; color: var(--text-dark); overflow-x: hidden; line-height: 1.6; font-size: 1rem; font-weight: 400; }
-        h1, h2, h3, h4, h5, h6 { font-family: 'Montserrat', sans-serif; line-height: 1.2; }
-        p { line-height: 1.6; }
+        body { font-family: 'Montserrat', sans-serif; color: var(--text-dark); overflow-x: hidden; line-height: 1.6; font-size: 1rem; font-weight: 500; }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Montserrat', sans-serif; line-height: 1.2; font-weight: 500; }
+        p { line-height: 1.6; font-weight: 500; }
 
         /* --- HEADER STYLES --- */
         .top-bar { background-color: #fff; border-bottom: 1px solid #eee; font-size: 0.8rem; font-weight: 500; }
         .top-bar i { color: var(--primary-blue); margin-right: 5px; }
 
         .navbar { padding: 15px 0; background-color: #fff; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
-        .navbar-brand { font-weight: 800; color: var(--primary-blue); font-size: 1.8rem; line-height: 1; text-decoration: none; }
+        .navbar-brand { font-weight: 500; color: var(--primary-blue); font-size: 1.8rem; line-height: 1; text-decoration: none; }
         .navbar-brand span { display: block; font-size: 0.8rem; font-weight: 500; letter-spacing: 2px; }
-        .nav-link { font-size: 0.85rem; font-weight: 600; text-transform: uppercase; color: var(--primary-blue) !important; margin: 0 10px; cursor: pointer; }
+        .nav-link { font-size: 0.85rem; font-weight: 500; text-transform: uppercase; color: var(--primary-blue) !important; margin: 0 10px; cursor: pointer; }
         
         .btn-primary-custom {
-            background-color: var(--primary-blue); color: white; border-radius: 0; font-weight: 600;
+            background-color: var(--primary-blue); color: white; border-radius: 0; font-weight: 500;
             padding: 10px 24px; font-size: 0.85rem; border: 2px solid var(--primary-blue); transition: all 0.3s ease;
         }
         .btn-primary-custom:hover { background-color: transparent; color: var(--primary-blue); }
 		/* --- Page Header Banner Styles --- */
 .page-header {
-    background-color: #005a92; /* Image ke hisaab se deep blue color */
+    background: linear-gradient(to right, rgba(2, 32, 76, 0.85) 0%, rgba(2, 32, 76, 0.7) 100%), url('banner2.jpg') center/cover;
     /* Agar aapko thoda gradient chahiye toh niche wali line use karein: */
     /* background: linear-gradient(to right, #004e7c, #0066a3); */
-    padding: 80px 0; /* Upar aur niche ki spacing */
+    padding: 100px 0;
     color: white;
     width: 100%;
 }
 
 .page-title {
     font-size: 3rem; /* Bada aur bold text */
-    font-weight: 800;
+    font-weight: 500;
     letter-spacing: 2px;
     margin-bottom: 15px;
     text-transform: uppercase;
@@ -57,106 +57,191 @@
 
 .page-subtitle {
     font-size: 1.1rem;
-    font-weight: 400;
+    font-weight: 500;
     opacity: 0.9; /* Text ko thoda soft dikhane ke liye */
     letter-spacing: 0.5px;
 }
 
-.safety-section {
+/* Mobile responsive karne ke liye */
+@media (max-width: 768px) {
+    .page-title {
+        font-size: 2rem;
+    }
+    .page-header {
+        padding: 50px 0;
+    }
+}
+.welcome-section {
     background-color: #ffffff;
-    padding: 80px 0; /* Standard section spacing */
 }
 
-.safety-title {
-    color: #02204c; /* Aapka signature Navy Blue color */
-    font-weight: 800;
+.welcome-title {
+    color: #02204c;
+    font-weight: 500;
     font-size: 2.2rem;
     letter-spacing: 0.5px;
-    text-transform: uppercase;
+    position: relative;
+    display: inline-block;
 }
 
-.safety-text {
+/* Optional: Chhota blue line title ke niche (image mein nahi hai par professional lagta hai) */
+/* .welcome-title::after { content: ''; display: block; width: 60px; height: 4px; background: #005a92; margin-top: 10px; } */
+
+.greeting-text {
+    font-weight: 500;
+    color: #444;
+    font-size: 1.1rem;
+}
+
+.welcome-content p {
     color: #555;
-    font-size: 1.15rem;
-    line-height: 1.6;
-    max-width: 900px;
-    font-weight: 400;
+    line-height: 1.8;
+    font-size: 1.05rem;
+    margin-bottom: 20px;
+    text-align: justify; /* Text ko clean dikhane ke liye */
 }
 
-/* Mobile responsive adjustments */
+/* Mobile adjustments */
 @media (max-width: 768px) {
-    .safety-title {
+    .welcome-title {
         font-size: 1.8rem;
     }
-    .safety-text {
+    .welcome-content p {
         font-size: 1rem;
+        text-align: left;
     }
 }
-
-.hse-section {
-    background-color: #fcfcfc;
+.well-integrity-section {
+    background-color: #ffffff;
+    padding: 60px 0;
 }
 
-/* Card Styling */
-.hse-card {
+/* Common Section Titles */
+.section-main-title {
+    color: #02204c;
+    font-weight: 500;
+    font-size: 2rem;
+}
+
+.sub-title-blue {
+    color: #02204c;
+    font-weight: 500;
+    font-size: 1.4rem;
+}
+
+/* Light Blue Product Rows */
+.product-row {
+    background-color: #f0f7ff;
+    padding: 14px 22px;
+    border-radius: 10px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+}
+
+.product-row i {
+    color: #005a92;
+    margin-right: 15px;
+    font-size: 1.2rem;
+}
+
+/* Info Stat Cards (Right Side) */
+.info-stat-card {
     background: #ffffff;
-    border-radius: 25px;
     border: 1px solid #f0f0f0;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-    transition: all 0.3s ease;
+    border-radius: 15px;
+    padding: 20px;
+    height: 100%;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.02);
 }
 
-.hse-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+.stat-icon-box {
+    width: 40px;
+    height: 40px;
+    background-color: #e6f0f8;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #005a92;
+    margin-bottom: 15px;
 }
 
-/* Icon Box Styling */
-.hse-icon-box {
-    width: 55px;
-    height: 55px;
-    background-color: #e6f0f8; /* Light blue background */
+/* Image Wrapper */
+.integrity-image-wrapper img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+/* Product Card Styling */
+.completion-product-card {
+    background: #fff;
+    border: 1px solid #e0e0e0;
     border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.completion-product-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.completion-product-img-wrapper {
+    position: relative;
+    height: 250px;
+    overflow: hidden;
+    background: var(--light-bg);
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.hse-icon-box i {
-    font-size: 1.5rem;
-    color: #005a92; /* Deep blue icon */
+.completion-product-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 15px;
+    transition: transform 0.3s ease;
 }
 
-/* Typography */
-.hse-title {
+.completion-product-card:hover .completion-product-img {
+    transform: scale(1.08);
+}
+
+.completion-product-card-body {
+    padding: 20px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.completion-product-title {
+    font-size: 1rem;
+    font-weight: 600;
     color: #02204c;
-    font-weight: 800;
-    font-size: 1.5rem;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
     letter-spacing: 0.5px;
 }
 
-.hse-text {
+.completion-product-desc {
+    font-size: 0.85rem;
     color: #666;
-    line-height: 1.7;
-    font-size: 0.95rem;
-    margin-bottom: 0;
+    line-height: 1.5;
+    flex-grow: 1;
 }
-
-/* Responsive adjustment */
-@media (max-width: 768px) {
-    .hse-card {
-        text-align: center;
-    }
-    .hse-icon-box {
-        margin: 0 auto 20px;
-    }
-}
-
 
         /* --- FOOTER STYLES --- */
         .footer { background-color: var(--primary-blue); color: white; padding: 60px 0 20px; font-size: 0.85rem; }
-        .footer h5 { font-weight: 700; font-size: 1rem; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; }
+        .footer h5 { font-weight: 500; font-size: 1rem; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; }
         .footer-links { list-style: none; padding: 0; margin: 0; }
         .footer-links li { margin-bottom: 10px; }
         .footer-links a { color: #aaa; text-decoration: none; transition: color 0.3s; }
@@ -166,7 +251,7 @@
         .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; margin-top: 40px; text-align: center; color: #777; font-size: 0.75rem; }
 
         /* --- COMMON UTILS --- */
-        .section-padding { padding: 80px 0; }
+        .section-padding { padding: 100px 0;
         .dropdown-toggle::after {
     display: none !important;
 }
@@ -178,6 +263,7 @@
     box-shadow: 0 5px 15px rgba(0,0,0,0.05);
 }
     </style>
+<link rel="stylesheet" href="styles-3d.css">
 </head>
 
 <body ng-controller="MainCtrl">
@@ -186,8 +272,8 @@
         <div class="top-bar py-2 d-none d-lg-block">
             <div class="container d-flex justify-content-between">
                 <div>
-                    <span class="me-4"><i class="fas fa-phone-alt"></i> +91 123 456 7890</span>
-                    <span><i class="fas fa-envelope"></i> info@scubeindustries.com</span>
+                    <span class="me-4"><i class="fas fa-phone-alt"></i> +91 87794 45970</span>
+                    <span><i class="fas fa-envelope"></i> sales@scubeindustries.com</span>
                 </div>
                 <div>
                     <span class="me-4"><i class="fas fa-clock"></i> Mon - Sat: 9:00 AM - 6:00 PM</span>
@@ -195,7 +281,8 @@
                 </div>
             </div>
         </div>
-  <nav class="navbar navbar-expand-lg sticky-top">
+
+         <nav class="navbar navbar-expand-lg sticky-top">
     <div class="container">
         <a class="navbar-brand" href="index.html" style="display:flex;align-items:center;gap:10px;"><img src="logo.png.jpeg" alt="Logo" style="height:70px;width:auto;"></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -229,8 +316,8 @@
                     <ul class="dropdown-menu" aria-labelledby="productsDropdown">
                         <li><a class="dropdown-item" href="flow-control-equipment.html">Flow Control Equipment</a></li>
                         <li><a class="dropdown-item" href="wireline-tools-accessories.html">Wireline Tools & Accessories</a></li>
-                        <li><a class="dropdown-item" href="coiled-tubing-tools.html">Coiled Tubing Tools</a></li>
-                        <li><a class="dropdown-item" href="completion-equipment.html">Completion Equipment</a></li>
+                        <li><a class="dropdown-item" href="pressure-control-equipment.html">Pressure Control Equipment</a></li>
+                        <li><a class="dropdown-item" href="completion-equipment.html">Coiled Tubing Equipment</a></li>
                         
                     </ul>
                 </li>
@@ -248,69 +335,36 @@
     <main>
       <section class="page-header">
     <div class="container text-center">
-        <h1 class="page-title">Health, Safety & Environment</h1>
-        <p class="page-subtitle">Our commitment to a safe workplace and sustainable practices.</p>
+        <h1 class="page-title">Coiled Tubing Equipment</h1>
+        <p class="page-subtitle">High-performance coiled tubing tools for efficient well intervention and workover operations.</p>
     </div>
 </section>
     </main>
-	<section class="safety-section py-5">
+	<section class="well-integrity-section py-5">
     <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-lg-10 text-center">
-                <h2 class="safety-title mb-4">SAFETY FIRST, ALWAYS</h2>
-                <p class="safety-text mx-auto">
-                    At SCUBE Industries, the health and safety of our employees, contractors, and the 
-                    communities in which we operate are paramount. We are dedicated to minimizing our 
-                    environmental impact and promoting sustainable manufacturing practices.
+        <div class="row g-5 align-items-center">
+            <div class="col-lg-7">
+                <h2 class="section-main-title mb-4">COILED TUBING OPERATIONS</h2>
+                <p class="section-description mb-5">
+                    SCUBE Industries provides advanced coiled tubing equipment designed for durability and precision in downhole interventions. Our comprehensive tool string components ensure maximum reliability, flexibility, and safety across all your well service operations.
                 </p>
             </div>
-        </div>
-    </div>
-</section>
-<section class="hse-section py-5">
-    <div class="container">
-        <div class="row g-4">
-            <div class="col-md-4">
-                <div class="hse-card h-100 p-4 p-md-5">
-                    <div class="hse-icon-box mb-4">
-                        <i class="fas fa-heartbeat"></i>
-                    </div>
-                    <h3 class="hse-title">HEALTH</h3>
-                    <p class="hse-text">We provide a healthy working environment and promote the physical and mental well-being of our workforce through regular health check-ups, ergonomic assessments, and wellness programs.</p>
-                </div>
-            </div>
 
-            <div class="col-md-4">
-                <div class="hse-card h-100 p-4 p-md-5">
-                    <div class="hse-icon-box mb-4">
-                        <i class="fas fa-hard-hat"></i>
-                    </div>
-                    <h3 class="hse-title">SAFETY</h3>
-                    <p class="hse-text">Our goal is zero harm. We implement rigorous safety protocols, conduct regular hazard identification, and provide comprehensive safety training to ensure every employee returns home safely every day.</p>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="hse-card h-100 p-4 p-md-5">
-                    <div class="hse-icon-box mb-4">
-                        <i class="fas fa-leaf"></i>
-                    </div>
-                    <h3 class="hse-title">ENVIRONMENT</h3>
-                    <p class="hse-text">We are committed to environmental stewardship by optimizing resource consumption, minimizing waste generation, and adhering to strict environmental regulations in all our manufacturing processes.</p>
+            <div class="col-lg-5">
+                <div class="integrity-image-wrapper">
+                    <img src="https://oilandgascourses.org/wp-content/uploads/2021/04/shutterstock_1654316023-scaled.jpg" alt="Coiled Tubing Operations" class="img-fluid rounded-4 shadow">
                 </div>
             </div>
         </div>
     </div>
 </section>
-	
-	
 
-    <footer class="footer">
+<footer class="footer">
         <div class="container">
             <div class="row g-4">
                 <div class="col-lg-3">
-                    <h3 style="font-weight: 800; letter-spacing: 1px; margin-bottom: 20px;">SCUBE<br><span style="font-size: 0.9rem; font-weight: 500;">INDUSTRIES</span></h3>
-                    <p style="color: #aaa;">A professionally managed company specializing in the manufacturing of high-quality equipment.</p>
+                    <h3 style="font-weight: 500; letter-spacing: 1px; margin-bottom: 20px;">SCUBE<br><span style="font-size: 0.9rem; font-weight: 500;">INDUSTRIES</span></h3>
+                    <p style="color: #aaa;">A professionally managed company specializing in the manufacturing and servicing of high-quality oil &amp; gas equipment.</p>
                     <div class="mt-3">
                         <a href="#" class="text-white me-3"><i class="fab fa-linkedin fs-5"></i></a>
                         <a href="#" class="text-white me-3"><i class="fab fa-twitter fs-5"></i></a>
@@ -324,6 +378,7 @@
                         <li><a href="products.html">Our Products</a></li>
                         <li><a href="services.html">Services</a></li>
                         <li><a href="news.html">News</a></li>
+                        <li><a href="careers.html">Career</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-2">
@@ -331,6 +386,7 @@
                     <ul class="footer-links">
                         <li><a href="corporate-profile.html">Company Profile</a></li>
                         <li><a href="quality-policy.html">Quality Policy</a></li>
+                        <li><a href="hse.html">HSE Policy</a></li>
                         <li><a href="contact.html">Contact Us</a></li>
                     </ul>
                 </div>
@@ -339,6 +395,7 @@
                     <p><i class="fas fa-map-marker-alt"></i> ATC-65, T.T.C MIDC AREA, MAHAPE, NAVI MUMBAI - 400710</p>
                     <p><i class="fas fa-phone-alt"></i> +91 87794 45970</p>
                     <p><i class="fas fa-envelope"></i> sales@scubeindustries.com</p>
+                    <a href="contact.html"><button class="btn btn-primary-custom mt-2 border-0" style="background-color: var(--accent-blue);">REQUEST A QUOTE <i class="fas fa-arrow-right ms-2"></i></button></a>
                 </div>
             </div>
             <div class="footer-bottom">
@@ -356,3 +413,4 @@
     </script>
 </body>
 </html>
+
