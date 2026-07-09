@@ -1,1 +1,1 @@
-# scube.industries
+# scube-industries-2026
