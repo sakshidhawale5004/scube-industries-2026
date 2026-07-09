@@ -27,7 +27,6 @@
 .card, .product-card, .news-card, .why-card, .expertise-btn, .experience-box, .strengths-box, 
 .flow-product-card, .tubing-product-card, .completion-product-card, .wireline-product-card {
     border-radius: 16px !important;
-    background: #ffffff;
     /* Soft baseline shadow */
     box-shadow: 0 4px 12px rgba(2, 32, 76, 0.05), 0 1px 3px rgba(2, 32, 76, 0.03) !important;
     transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s cubic-bezier(0.165, 0.84, 0.44, 1) !important;
@@ -35,6 +34,10 @@
     border: 1px solid rgba(255, 255, 255, 0.9) !important;
     position: relative;
     overflow: hidden;
+}
+
+.card, .product-card, .news-card, .why-card, .flow-product-card, .tubing-product-card, .completion-product-card, .wireline-product-card {
+    background: #ffffff;
 }
 
 /* Hover: Elegant lift with a wide, diffused shadow */
