@@ -1,7 +1,7 @@
 /* Premium, Professional 3D Enhancements */
 
 /* --- 1. Tactile 3D Buttons --- */
-.btn, .btn-primary, .btn-primary-custom, .btn-light-custom, .scube-carousel-btn {
+.btn, .btn-primary, .btn-primary-custom, .btn-light-custom, .scube-carousel-btn, .product-btn, .category-btn {
     border-radius: 8px !important;
     /* Creating a subtle 3D base using box-shadow */
     box-shadow: 0 4px 0 var(--accent-blue, #0047b3), 0 5px 15px rgba(0, 0, 0, 0.1) !important;
@@ -11,13 +11,13 @@
 }
 
 /* Hover: Slight lift, intensified shadow */
-.btn:hover, .btn-primary:hover, .btn-primary-custom:hover, .btn-light-custom:hover, .scube-carousel-btn:hover {
+.btn:hover, .btn-primary:hover, .btn-primary-custom:hover, .btn-light-custom:hover, .scube-carousel-btn:hover, .product-btn:hover, .category-btn:hover {
     transform: translateY(-2px) !important;
     box-shadow: 0 6px 0 var(--accent-blue, #0047b3), 0 8px 20px rgba(0, 0, 0, 0.15) !important;
 }
 
 /* Active (Click): The button physically pushes down */
-.btn:active, .btn-primary:active, .btn-primary-custom:active, .btn-light-custom:active, .scube-carousel-btn:active {
+.btn:active, .btn-primary:active, .btn-primary-custom:active, .btn-light-custom:active, .scube-carousel-btn:active, .product-btn:active, .category-btn:active {
     transform: translateY(4px) !important;
     box-shadow: 0 0 0 var(--accent-blue, #0047b3), 0 2px 5px rgba(0, 0, 0, 0.2) !important;
 }
