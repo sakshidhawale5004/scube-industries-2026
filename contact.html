@@ -287,29 +287,24 @@
         document.addEventListener('DOMContentLoaded', function() {
             const contactForm = document.getElementById('contactForm');
             if (contactForm) {
-                contactForm.addEventListener('submit', async function(e) {
+                contactForm.addEventListener('submit', function(e) {
                     e.preventDefault();
                     
                     const formData = new FormData(contactForm);
-
-                    try {
-                        const response = await fetch('api/contact.php', {
-                            method: 'POST',
-                            body: formData
-                        });
-
-                        const data = await response.json();
-
-                        if (response.ok) {
-                            alert('Message sent successfully! Our team will contact you shortly.');
-                            contactForm.reset();
-                        } else {
-                            alert('Error: ' + (data.error || 'Failed to send message'));
-                        }
-                    } catch (error) {
-                        console.error('Error:', error);
-                        alert('Failed to send message. Please try again.');
-                    }
+                    const firstName = formData.get('firstName') || '';
+                    const lastName = formData.get('lastName') || '';
+                    const email = formData.get('email') || '';
+                    const phone = formData.get('phone') || '';
+                    const subject = formData.get('subject') || '';
+                    const message = formData.get('message') || '';
+                    
+                    const whatsappText = `*New Contact Inquiry*\n\n*Name:* ${firstName} ${lastName}\n*Email:* ${email}\n*Phone:* ${phone}\n*Subject:* ${subject}\n*Message:* ${message}`;
+                    
+                    const whatsappUrl = `https://wa.me/918779445970?text=${encodeURIComponent(whatsappText)}`;
+                    window.open(whatsappUrl, '_blank');
+                    
+                    alert('Redirecting to WhatsApp to send your message!');
+                    contactForm.reset();
                 });
             }
         });

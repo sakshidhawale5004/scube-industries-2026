@@ -276,29 +276,23 @@
         document.addEventListener('DOMContentLoaded', function() {
             const careersForm = document.getElementById('careersForm');
             if (careersForm) {
-                careersForm.addEventListener('submit', async function(e) {
+                careersForm.addEventListener('submit', function(e) {
                     e.preventDefault();
                     
                     const formData = new FormData(careersForm);
-
-                    try {
-                        const response = await fetch('api/careers.php', {
-                            method: 'POST',
-                            body: formData
-                        });
-
-                        const data = await response.json();
-
-                        if (response.ok) {
-                            alert('Thank you for applying! Our HR team will review your profile and get back to you.');
-                            careersForm.reset();
-                        } else {
-                            alert('Error: ' + (data.error || 'Failed to submit application'));
-                        }
-                    } catch (error) {
-                        console.error('Error:', error);
-                        alert('Failed to submit application. Please try again.');
-                    }
+                    const fullName = formData.get('fullName') || '';
+                    const email = formData.get('email') || '';
+                    const phone = formData.get('phone') || '';
+                    const location = formData.get('location') || '';
+                    const position = formData.get('position') || '';
+                    
+                    const whatsappText = `*New Job Application*\n\n*Name:* ${fullName}\n*Email:* ${email}\n*Phone:* ${phone}\n*Location:* ${location}\n*Position Applied For:* ${position}\n\n_Note: Please ask the applicant to attach their PDF resume directly in this chat._`;
+                    
+                    const whatsappUrl = `https://wa.me/918779445970?text=${encodeURIComponent(whatsappText)}`;
+                    window.open(whatsappUrl, '_blank');
+                    
+                    alert('Redirecting to WhatsApp to submit your application! Please attach your PDF resume directly in the WhatsApp chat.');
+                    careersForm.reset();
                 });
             }
         });
