@@ -1,96 +1,74 @@
 /* Professional 3D Enhancements */
 
-body {
-    background-color: #f0f4f8;
-}
-
-/* 3D Perspective Container */
-.wireline-product-card, .product-card, .card {
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
-    transform-style: preserve-3d;
-    perspective: 1000px;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1), 0 6px 6px rgba(0,0,0,0.05), inset 0 -3px 0 rgba(0,0,0,0.05);
-    border-radius: 15px;
-    background: linear-gradient(145deg, #ffffff, #f5f7fa);
-    border: none;
-    will-change: transform;
-}
-
-.wireline-product-card:hover, .product-card:hover, .card:hover {
-    transform: translateY(-10px) rotateX(8deg) rotateY(5deg) scale(1.02) !important;
-    box-shadow: -15px 25px 35px rgba(0,0,0,0.15), 15px -10px 25px rgba(255,255,255,0.8);
-    z-index: 10;
-}
-
-/* Make images pop out in 3D */
-.wireline-product-img-wrapper, .product-img-wrapper {
-    background: transparent !important;
-    transform: translateZ(30px);
-    transition: transform 0.4s ease;
-    border-radius: 15px 15px 0 0;
-}
-
-.wireline-product-card:hover .wireline-product-img-wrapper, 
-.product-card:hover .product-img-wrapper {
-    transform: translateZ(60px) scale(1.08);
-}
-
-/* Make text pop out in 3D */
-.wireline-product-card-body, .product-card-body {
-    transform: translateZ(20px);
-    transition: transform 0.4s ease;
-}
-
-.wireline-product-card:hover .wireline-product-card-body,
-.product-card:hover .product-card-body {
-    transform: translateZ(40px);
-}
-
-/* 3D Pushable Buttons */
-.btn-primary-custom, .category-btn {
-    border-radius: 8px !important;
-    box-shadow: 0 6px 0 #042456, 0 10px 15px rgba(0,0,0,0.2) !important;
-    transition: all 0.2s ease !important;
-    transform: translateY(0);
-    position: relative;
-    border: none !important;
-    background-color: var(--primary-blue) !important;
-    color: white !important;
-    margin-bottom: 6px;
-}
-
-.btn-primary-custom:hover, .category-btn:hover, .category-btn.active {
-    transform: translateY(2px) !important;
-    box-shadow: 0 4px 0 #042456, 0 6px 10px rgba(0,0,0,0.2) !important;
-    background-color: var(--accent-blue) !important;
-}
-
-.btn-primary-custom:active, .category-btn:active {
-    transform: translateY(6px) !important;
-    box-shadow: 0 0 0 #042456, 0 2px 5px rgba(0,0,0,0.2) !important;
-}
-
-/* 3D Text Effects for Headers */
-.page-title, .section-main-title, .wireline-section-title, .category-section-title {
-    text-shadow: 2px 2px 0 #d1d9e6, 4px 4px 0 #b8c5d9, 6px 6px 15px rgba(0,0,0,0.2);
-}
-
-/* Navbar 3D floating effect */
-.navbar {
-    box-shadow: 0 10px 20px rgba(0,0,0,0.08) !important;
-    border-bottom: 2px solid rgba(0,0,0,0.03);
-}
-
-/* Forms 3D look */
-.form-control, .form-select {
-    border-radius: 8px !important;
-    box-shadow: inset 4px 4px 8px rgba(0,0,0,0.05), inset -4px -4px 8px rgba(255,255,255,0.8) !important;
-    border: 1px solid #e0e5ec !important;
-    background-color: #f0f4f8 !important;
+/* Buttons */
+.btn, .btn-primary, .btn-primary-custom, .btn-light-custom, .scube-carousel-btn {
+    border-radius: 6px !important; /* Reduced radius */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1), inset 0 -3px 0 rgba(0,0,0,0.15) !important;
     transition: all 0.3s ease !important;
+    transform: translateY(0);
+}
+
+.btn:hover, .btn-primary:hover, .btn-primary-custom:hover, .btn-light-custom:hover, .scube-carousel-btn:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15), inset 0 -3px 0 rgba(0,0,0,0.1) !important;
+}
+
+.btn:active, .btn-primary:active, .btn-primary-custom:active, .btn-light-custom:active, .scube-carousel-btn:active {
+    transform: translateY(1px) !important;
+    box-shadow: 0 2px 3px rgba(0,0,0,0.1), inset 0 1px 0 rgba(0,0,0,0.1) !important;
+}
+
+/* Cards (Products, News, Why Choose Us) */
+.card, .product-card, .news-card, .why-card, .expertise-btn, .experience-box, .strengths-box {
+    border-radius: 12px !important;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08), 0 4px 6px rgba(0, 0, 0, 0.04) !important;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+    border: 1px solid rgba(255, 255, 255, 0.8) !important;
+}
+
+.card:hover, .product-card:hover, .news-card:hover, .why-card:hover, .expertise-btn:hover {
+    transform: translateY(-8px) !important;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12), 0 8px 12px rgba(0, 0, 0, 0.06) !important;
+}
+
+/* Images & Media */
+.gallery-img, .intro-image, .product-img {
+    border-radius: 12px !important;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1) !important;
+    transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+.gallery-img:hover {
+    transform: scale(1.03) !important;
+    box-shadow: 0 12px 25px rgba(0,0,0,0.15) !important;
+}
+
+/* Dropdown Menu */
+.dropdown-menu {
+    border-radius: 12px !important;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.15), 0 5px 15px rgba(0,0,0,0.1) !important;
+    border: none !important;
+}
+
+/* Navbar */
+.navbar {
+    box-shadow: 0 4px 15px rgba(0,0,0,0.06) !important;
+}
+
+/* Forms */
+.form-control, .form-select {
+    border-radius: 6px !important;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.03) !important;
+    border: 1px solid #ced4da !important;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out !important;
 }
 
 .form-control:focus, .form-select:focus {
-    box-shadow: inset 2px 2px 4px rgba(0,0,0,0.08), inset -2px -2px 4px rgba(255,255,255,0.9), 0 0 0 4px rgba(2, 32, 76, 0.1) !important;
-    background-color: #ffffff !important;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.03), 0 0 0 4px rgba(2, 32, 76, 0.1) !important;
+    border-color: #02204c !important;
+}
+
+/* Global Aesthetics */
+body {
+    background-color: #fcfcfc;
 }
