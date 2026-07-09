@@ -1,74 +1,116 @@
-/* Professional 3D Enhancements */
+/* Premium, Professional 3D Enhancements */
 
-/* Buttons */
+/* --- 1. Tactile 3D Buttons --- */
 .btn, .btn-primary, .btn-primary-custom, .btn-light-custom, .scube-carousel-btn {
-    border-radius: 6px !important; /* Reduced radius */
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1), inset 0 -3px 0 rgba(0,0,0,0.15) !important;
-    transition: all 0.3s ease !important;
+    border-radius: 8px !important;
+    /* Creating a subtle 3D base using box-shadow */
+    box-shadow: 0 4px 0 var(--accent-blue, #0047b3), 0 5px 15px rgba(0, 0, 0, 0.1) !important;
+    transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
     transform: translateY(0);
+    border: none !important; /* Overriding flat borders to maintain 3D illusion */
 }
 
+/* Hover: Slight lift, intensified shadow */
 .btn:hover, .btn-primary:hover, .btn-primary-custom:hover, .btn-light-custom:hover, .scube-carousel-btn:hover {
     transform: translateY(-2px) !important;
-    box-shadow: 0 6px 12px rgba(0,0,0,0.15), inset 0 -3px 0 rgba(0,0,0,0.1) !important;
+    box-shadow: 0 6px 0 var(--accent-blue, #0047b3), 0 8px 20px rgba(0, 0, 0, 0.15) !important;
 }
 
+/* Active (Click): The button physically pushes down */
 .btn:active, .btn-primary:active, .btn-primary-custom:active, .btn-light-custom:active, .scube-carousel-btn:active {
-    transform: translateY(1px) !important;
-    box-shadow: 0 2px 3px rgba(0,0,0,0.1), inset 0 1px 0 rgba(0,0,0,0.1) !important;
+    transform: translateY(4px) !important;
+    box-shadow: 0 0 0 var(--accent-blue, #0047b3), 0 2px 5px rgba(0, 0, 0, 0.2) !important;
 }
 
-/* Cards (Products, News, Why Choose Us) */
-.card, .product-card, .news-card, .why-card, .expertise-btn, .experience-box, .strengths-box {
+/* --- 2. Premium Card Hover Effects --- */
+/* Target all card-like elements including product cards across pages */
+.card, .product-card, .news-card, .why-card, .expertise-btn, .experience-box, .strengths-box, 
+.flow-product-card, .tubing-product-card, .completion-product-card, .wireline-product-card {
+    border-radius: 16px !important;
+    background: #ffffff;
+    /* Soft baseline shadow */
+    box-shadow: 0 4px 12px rgba(2, 32, 76, 0.05), 0 1px 3px rgba(2, 32, 76, 0.03) !important;
+    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s cubic-bezier(0.165, 0.84, 0.44, 1) !important;
+    /* Inner light border for glass/premium feel */
+    border: 1px solid rgba(255, 255, 255, 0.9) !important;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Hover: Elegant lift with a wide, diffused shadow */
+.card:hover, .product-card:hover, .news-card:hover, .why-card:hover, .expertise-btn:hover,
+.flow-product-card:hover, .tubing-product-card:hover, .completion-product-card:hover, .wireline-product-card:hover {
+    transform: translateY(-10px) !important;
+    box-shadow: 0 20px 40px rgba(2, 32, 76, 0.12), 0 8px 16px rgba(2, 32, 76, 0.06) !important;
+    z-index: 2;
+}
+
+/* --- 3. Dynamic Image & Media Depth --- */
+/* Target image wrappers */
+.gallery-img, .intro-image, .product-img, .facility-image-wrapper img, .integrity-image-wrapper img,
+.flow-product-img, .tubing-product-img, .completion-product-img, .wireline-product-img {
     border-radius: 12px !important;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08), 0 4px 6px rgba(0, 0, 0, 0.04) !important;
-    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
-    border: 1px solid rgba(255, 255, 255, 0.8) !important;
+    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.6s ease !important;
+    /* Slight baseline depth for standalone images */
+    box-shadow: 0 8px 20px rgba(0,0,0,0.06) !important;
 }
 
-.card:hover, .product-card:hover, .news-card:hover, .why-card:hover, .expertise-btn:hover {
-    transform: translateY(-8px) !important;
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12), 0 8px 12px rgba(0, 0, 0, 0.06) !important;
+/* Image scaling on hover when inside a card or wrapper */
+.card:hover img, .product-card:hover img, .flow-product-card:hover .flow-product-img, 
+.tubing-product-card:hover .tubing-product-img, .completion-product-card:hover .completion-product-img,
+.wireline-product-card:hover .wireline-product-img, .gallery-img:hover {
+    transform: scale(1.05) !important;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1) !important;
 }
 
-/* Images & Media */
-.gallery-img, .intro-image, .product-img {
-    border-radius: 12px !important;
-    box-shadow: 0 6px 15px rgba(0,0,0,0.1) !important;
-    transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+/* --- 4. Floating Navbar & Dropdowns --- */
+/* Soft frosted glass aesthetic for the navbar */
+.navbar {
+    background: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 4px 20px rgba(2, 32, 76, 0.08) !important;
+    transition: all 0.3s ease;
 }
 
-.gallery-img:hover {
-    transform: scale(1.03) !important;
-    box-shadow: 0 12px 25px rgba(0,0,0,0.15) !important;
-}
-
-/* Dropdown Menu */
+/* Floating, highly legible dropdown menus */
 .dropdown-menu {
     border-radius: 12px !important;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.15), 0 5px 15px rgba(0,0,0,0.1) !important;
-    border: none !important;
+    background: #ffffff !important;
+    box-shadow: 0 15px 35px rgba(2, 32, 76, 0.15), 0 5px 15px rgba(2, 32, 76, 0.05) !important;
+    border: 1px solid rgba(0, 0, 0, 0.05) !important;
+    padding: 10px 0 !important;
+    transform-origin: top;
+    animation: dropdownPop 0.3s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
 }
 
-/* Navbar */
-.navbar {
-    box-shadow: 0 4px 15px rgba(0,0,0,0.06) !important;
+@keyframes dropdownPop {
+    0% { opacity: 0; transform: scaleY(0.95) translateY(-10px); }
+    100% { opacity: 1; transform: scaleY(1) translateY(0); }
 }
 
-/* Forms */
+.dropdown-item {
+    transition: background-color 0.2s ease, color 0.2s ease, padding-left 0.2s ease;
+}
+
+.dropdown-item:hover {
+    background-color: #f0f7ff !important;
+    color: var(--primary-blue) !important;
+    padding-left: 20px !important; /* Gentle right-shift on hover */
+}
+
+/* --- 5. Inputs & Forms --- */
 .form-control, .form-select {
-    border-radius: 6px !important;
-    box-shadow: inset 0 2px 4px rgba(0,0,0,0.03) !important;
-    border: 1px solid #ced4da !important;
-    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out !important;
+    border-radius: 8px !important;
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.02) !important;
+    border: 1px solid #e0e6ed !important;
+    background-color: #fcfcfd !important;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
 }
 
 .form-control:focus, .form-select:focus {
-    box-shadow: inset 0 2px 4px rgba(0,0,0,0.03), 0 0 0 4px rgba(2, 32, 76, 0.1) !important;
-    border-color: #02204c !important;
-}
-
-/* Global Aesthetics */
-body {
-    background-color: #fcfcfc;
+    background-color: #ffffff !important;
+    box-shadow: 0 4px 12px rgba(2, 32, 76, 0.08), 0 0 0 3px rgba(2, 32, 76, 0.1) !important;
+    border-color: var(--primary-blue) !important;
+    transform: translateY(-1px);
 }
