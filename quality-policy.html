@@ -69,81 +69,196 @@
                 padding: 60px 0;
             }
         }
+/* Enhanced Quality Section CSS */
 .quality-section {
-    background-color: #fcfcfc;
-    padding: 80px 0;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    padding: 100px 0;
+    position: relative;
+    overflow: hidden;
 }
 
-/* Quality Badge Icon */
-.quality-section {
-    background-color: #ffffff;
-    padding: 60px 0;
-}
-
-.quality-badge {
-    width: 60px;
-    height: 60px;
-    background-color: #f0f7ff;
+/* Decorative background elements */
+.quality-section::before {
+    content: '';
+    position: absolute;
+    top: -100px;
+    right: -100px;
+    width: 400px;
+    height: 400px;
     border-radius: 50%;
+    background: radial-gradient(circle, rgba(0, 71, 179, 0.05) 0%, rgba(0, 71, 179, 0) 70%);
+    z-index: 0;
+}
+.quality-section::after {
+    content: '';
+    position: absolute;
+    bottom: -150px;
+    left: -100px;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(2, 32, 76, 0.04) 0%, rgba(2, 32, 76, 0) 70%);
+    z-index: 0;
+}
+
+.quality-container {
+    position: relative;
+    z-index: 1;
+}
+
+.quality-header-card {
+    background: #fff;
+    border-radius: 20px;
+    padding: 50px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.06);
+    margin-bottom: 60px;
+    position: relative;
+    border-top: 5px solid var(--accent-blue);
+}
+
+.quality-badge-modern {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, var(--primary-blue), var(--accent-blue));
+    border-radius: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
+    margin: -90px auto 30px auto;
+    box-shadow: 0 15px 30px rgba(0, 71, 179, 0.3);
+    transform: rotate(45deg);
 }
 
-.quality-badge i {
-    font-size: 1.5rem;
-    color: #0056b3;
+.quality-badge-modern i {
+    font-size: 2rem;
+    color: #fff;
+    transform: rotate(-45deg);
 }
 
-.quality-title {
-    color: #001f3f;
-    font-weight: 500;
+.quality-title-modern {
+    color: var(--primary-blue);
+    font-weight: 700;
     font-size: 2.2rem;
-    letter-spacing: 0.5px;
+    letter-spacing: 1px;
+    margin-bottom: 25px;
 }
 
-.quality-content p {
+.quality-content-modern p {
     color: #555;
-    font-size: 1.05rem;
-    line-height: 1.7;
+    font-size: 1.1rem;
+    line-height: 1.8;
     margin-bottom: 20px;
 }
 
-.objectives-heading {
-    color: #001f3f;
-    font-weight: 500;
-    font-size: 1.2rem;
-    text-transform: uppercase;
+/* Objectives Grid */
+.objective-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 30px;
+    height: 100%;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+    border: 1px solid rgba(0,0,0,0.02);
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    position: relative;
+    overflow: hidden;
 }
 
-.quality-list {
-    list-style: none;
-    padding: 0;
+.objective-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-blue), var(--accent-blue));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s ease;
 }
 
-.quality-list li {
+.objective-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+.objective-card:hover::before {
+    transform: scaleX(1);
+}
+
+.objective-icon-wrapper {
+    width: 50px;
+    height: 50px;
+    background: rgba(0, 71, 179, 0.08);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    color: var(--accent-blue);
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.objective-card:hover .objective-icon-wrapper {
+    background: var(--accent-blue);
+    color: #fff;
+    transform: rotateY(180deg);
+}
+.objective-card:hover .objective-icon-wrapper i {
+    transform: rotateY(180deg);
+}
+
+.objective-card-title {
+    color: var(--primary-blue);
+    font-weight: 700;
+    font-size: 1.15rem;
+    margin-bottom: 20px;
+}
+
+.objective-item {
     display: flex;
     align-items: flex-start;
-    margin-bottom: 18px;
-    color: #444;
-    font-size: 1rem;
+    margin-bottom: 15px;
+    color: #555;
+    font-size: 0.95rem;
+    line-height: 1.6;
 }
 
-.quality-list li i {
-    color: #0056b3;
-    font-size: 1.3rem;
-    margin-right: 15px;
-    margin-top: 2px;
+.objective-item i {
+    color: #28a745;
+    margin-top: 4px;
+    margin-right: 12px;
+    font-size: 1.1rem;
 }
 
-.quality-list li span {
-    line-height: 1.5;
+.objectives-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+.objectives-header h3 {
+    color: var(--primary-blue);
+    font-size: 2.2rem;
+    font-weight: 700;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 15px;
+}
+.objectives-header h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 4px;
+    background: var(--accent-blue);
+    border-radius: 2px;
 }
 
 /* Responsive adjustment */
 @media (max-width: 768px) {
-    .quality-title { font-size: 1.8rem; }
-    .objectives-container { padding: 0 15px; }
+    .quality-title-modern { font-size: 1.8rem; }
+    .quality-header-card { padding: 30px 20px; }
 }
 
         /* --- FOOTER STYLES --- */
@@ -248,80 +363,159 @@
     </div>
 </section>
     </main>
-	<section class="quality-section py-5">
-    <div class="container">
+<section class="quality-section">
+    <div class="container quality-container">
+        
+        <!-- Main Quality Policy Card -->
         <div class="row justify-content-center">
-            <div class="col-lg-9 text-center">
-                
-                <div class="d-flex justify-content-center mb-4">
-                    <div class="quality-badge">
+            <div class="col-lg-10">
+                <div class="quality-header-card text-center">
+                    <div class="quality-badge-modern">
                         <i class="fas fa-ribbon"></i>
                     </div>
-                </div>
-
-                <h2 class="quality-title mb-4">COMMITMENT TO QUALITY</h2>
-                
-                <div class="quality-content mb-5">
-                    <p style="text-align: justify;">We are committed to understanding and meeting customer requirements to ensure satisfaction and trust, while maintaining full compliance with API Q1 and applicable industry standards. Through continual improvement of our Quality Management System, regular reviews, risk assessments, and corrective actions, we enhance effectiveness and reliability. We empower our employees by providing training and fostering competence, enabling them to actively contribute to achieving quality objectives. By identifying, evaluating, and mitigating risks, we safeguard product quality and delivery. We collaborate closely with suppliers to ensure quality inputs and services, and our leadership is dedicated to providing resources, accountability, and cultivating a culture of quality throughout the organization.</p>
-                </div>
-
-                <div class="objectives-container text-start mx-auto" style="max-width: 900px;">
-                    <h5 class="objectives-heading mb-4 text-center">OUR QUALITY OBJECTIVES</h5>
-                    
-                    <div class="row g-4">
-                        <div class="col-md-6">
-                            <h6 style="color: var(--primary-blue); font-weight: 600;"><i class="fas fa-users me-2"></i>Customer Satisfaction</h6>
-                            <ul class="quality-list">
-                                <li><i class="far fa-check-circle"></i> <span>Achieve ≥95% customer satisfaction rating on delivered products and services.</span></li>
-                                <li><i class="far fa-check-circle"></i> <span>Resolve customer complaints within 10 business days.</span></li>
-                            </ul>
-                        </div>
-                        <div class="col-md-6">
-                            <h6 style="color: var(--primary-blue); font-weight: 600;"><i class="fas fa-clipboard-check me-2"></i>Compliance & Conformance</h6>
-                            <ul class="quality-list">
-                                <li><i class="far fa-check-circle"></i> <span>Maintain 100% compliance with API Q1 and applicable regulatory requirements.</span></li>
-                                <li><i class="far fa-check-circle"></i> <span>Zero non-conformities in external audits annually.</span></li>
-                            </ul>
-                        </div>
-                        <div class="col-md-6">
-                            <h6 style="color: var(--primary-blue); font-weight: 600;"><i class="fas fa-chart-line me-2"></i>Continual Improvement</h6>
-                            <ul class="quality-list">
-                                <li><i class="far fa-check-circle"></i> <span>Implement at least 3 improvement projects per year based on risk assessment and performance data.</span></li>
-                                <li><i class="far fa-check-circle"></i> <span>Reduce corrective actions recurrence rate by 20% year-over-year.</span></li>
-                            </ul>
-                        </div>
-                        <div class="col-md-6">
-                            <h6 style="color: var(--primary-blue); font-weight: 600;"><i class="fas fa-graduation-cap me-2"></i>Competence & Training</h6>
-                            <ul class="quality-list">
-                                <li><i class="far fa-check-circle"></i> <span>Ensure 100% of employees receive annual training relevant to their roles.</span></li>
-                                <li><i class="far fa-check-circle"></i> <span>Achieve ≥90% competency score in post-training evaluations.</span></li>
-                            </ul>
-                        </div>
-                        <div class="col-md-6">
-                            <h6 style="color: var(--primary-blue); font-weight: 600;"><i class="fas fa-shield-alt me-2"></i>Risk Management</h6>
-                            <ul class="quality-list">
-                                <li><i class="far fa-check-circle"></i> <span>Identify and mitigate all high-risk items in product realization processes before release.</span></li>
-                                <li><i class="far fa-check-circle"></i> <span>Conduct quarterly risk reviews with documented outcomes.</span></li>
-                            </ul>
-                        </div>
-                        <div class="col-md-6">
-                            <h6 style="color: var(--primary-blue); font-weight: 600;"><i class="fas fa-handshake me-2"></i>Supplier Quality</h6>
-                            <ul class="quality-list">
-                                <li><i class="far fa-check-circle"></i> <span>Ensure ≥95% of suppliers meet approved quality standards.</span></li>
-                                <li><i class="far fa-check-circle"></i> <span>Conduct supplier audits annually with corrective actions closed within 30 days.</span></li>
-                            </ul>
-                        </div>
-                        <div class="col-md-6 offset-md-3">
-                            <h6 style="color: var(--primary-blue); font-weight: 600;"><i class="fas fa-cogs me-2"></i>Operational Performance</h6>
-                            <ul class="quality-list">
-                                <li><i class="far fa-check-circle"></i> <span>Achieve ≥98% on-time delivery of products and services.</span></li>
-                                <li><i class="far fa-check-circle"></i> <span>Reduce internal defect rate by 15% annually.</span></li>
-                            </ul>
-                        </div>
+                    <h2 class="quality-title-modern">COMMITMENT TO QUALITY</h2>
+                    <div class="quality-content-modern">
+                        <p style="text-align: justify; margin: 0 auto; max-width: 900px;">
+                            We are committed to understanding and meeting customer requirements to ensure satisfaction and trust, while maintaining full compliance with API Q1 and applicable industry standards. Through continual improvement of our Quality Management System, regular reviews, risk assessments, and corrective actions, we enhance effectiveness and reliability. We empower our employees by providing training and fostering competence, enabling them to actively contribute to achieving quality objectives. By identifying, evaluating, and mitigating risks, we safeguard product quality and delivery. We collaborate closely with suppliers to ensure quality inputs and services, and our leadership is dedicated to providing resources, accountability, and cultivating a culture of quality throughout the organization.
+                        </p>
                     </div>
                 </div>
-
             </div>
+        </div>
+
+        <!-- Objectives Section -->
+        <div class="objectives-header">
+            <h3>OUR QUALITY OBJECTIVES</h3>
+        </div>
+
+        <div class="row g-4 justify-content-center">
+            
+            <!-- Objective 1 -->
+            <div class="col-lg-4 col-md-6">
+                <div class="objective-card">
+                    <div class="objective-icon-wrapper">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h4 class="objective-card-title">Customer Satisfaction</h4>
+                    <div class="objective-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Achieve ≥95% customer satisfaction rating on delivered products and services.</span>
+                    </div>
+                    <div class="objective-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Resolve customer complaints within 10 business days.</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Objective 2 -->
+            <div class="col-lg-4 col-md-6">
+                <div class="objective-card">
+                    <div class="objective-icon-wrapper">
+                        <i class="fas fa-clipboard-check"></i>
+                    </div>
+                    <h4 class="objective-card-title">Compliance & Conformance</h4>
+                    <div class="objective-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Maintain 100% compliance with API Q1 and applicable regulatory requirements.</span>
+                    </div>
+                    <div class="objective-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Zero non-conformities in external audits annually.</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Objective 3 -->
+            <div class="col-lg-4 col-md-6">
+                <div class="objective-card">
+                    <div class="objective-icon-wrapper">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h4 class="objective-card-title">Continual Improvement</h4>
+                    <div class="objective-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Implement at least 3 improvement projects per year based on risk assessment and performance data.</span>
+                    </div>
+                    <div class="objective-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Reduce corrective actions recurrence rate by 20% year-over-year.</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Objective 4 -->
+            <div class="col-lg-4 col-md-6">
+                <div class="objective-card">
+                    <div class="objective-icon-wrapper">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h4 class="objective-card-title">Competence & Training</h4>
+                    <div class="objective-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Ensure 100% of employees receive annual training relevant to their roles.</span>
+                    </div>
+                    <div class="objective-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Achieve ≥90% competency score in post-training evaluations.</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Objective 5 -->
+            <div class="col-lg-4 col-md-6">
+                <div class="objective-card">
+                    <div class="objective-icon-wrapper">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h4 class="objective-card-title">Risk Management</h4>
+                    <div class="objective-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Identify and mitigate all high-risk items in product realization processes before release.</span>
+                    </div>
+                    <div class="objective-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Conduct quarterly risk reviews with documented outcomes.</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Objective 6 -->
+            <div class="col-lg-4 col-md-6">
+                <div class="objective-card">
+                    <div class="objective-icon-wrapper">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h4 class="objective-card-title">Supplier Quality</h4>
+                    <div class="objective-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Ensure ≥95% of suppliers meet approved quality standards.</span>
+                    </div>
+                    <div class="objective-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Conduct supplier audits annually with corrective actions closed within 30 days.</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Objective 7 -->
+            <div class="col-lg-4 col-md-6">
+                <div class="objective-card">
+                    <div class="objective-icon-wrapper">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h4 class="objective-card-title">Operational Performance</h4>
+                    <div class="objective-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Achieve ≥98% on-time delivery of products and services.</span>
+                    </div>
+                    <div class="objective-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Reduce internal defect rate by 15% annually.</span>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 </section>
