@@ -69,9 +69,8 @@
 /* --- 4. Floating Navbar & Dropdowns --- */
 /* Soft frosted glass aesthetic for the navbar */
 .navbar {
-    background: rgba(255, 255, 255, 0.95) !important;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    background: #ffffff !important;
+    /* removed frosted glass effects */
     box-shadow: 0 4px 20px rgba(2, 32, 76, 0.08) !important;
     transition: all 0.3s ease;
 }
