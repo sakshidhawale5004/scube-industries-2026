@@ -39,7 +39,7 @@
         .btn-primary-custom:hover { background-color: transparent; color: var(--primary-blue); }
         /* --- Page Header Banner Styles --- */
         .page-header {
-            background: linear-gradient(to right, rgba(2, 32, 76, 0.85) 0%, rgba(2, 32, 76, 0.7) 100%), url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
+            background: var(--primary-blue);
             padding: 100px 0;
             color: white;
             width: 100%;
@@ -262,34 +262,63 @@
                 <h2 class="quality-title mb-4">COMMITMENT TO QUALITY</h2>
                 
                 <div class="quality-content mb-5">
-                    <p>At SCUBE Industries, quality is not just a standard; it is the foundation of our business. We are dedicated to manufacturing and supplying products that consistently meet or exceed customer expectations and comply with all applicable regulatory and statutory requirements.</p>
-                    <p>Our Quality Management System is designed to ensure continuous improvement in all our processes, products, and services.</p>
+                    <p style="text-align: justify;">We are committed to understanding and meeting customer requirements to ensure satisfaction and trust, while maintaining full compliance with API Q1 and applicable industry standards. Through continual improvement of our Quality Management System, regular reviews, risk assessments, and corrective actions, we enhance effectiveness and reliability. We empower our employees by providing training and fostering competence, enabling them to actively contribute to achieving quality objectives. By identifying, evaluating, and mitigating risks, we safeguard product quality and delivery. We collaborate closely with suppliers to ensure quality inputs and services, and our leadership is dedicated to providing resources, accountability, and cultivating a culture of quality throughout the organization.</p>
                 </div>
 
-                <div class="objectives-container text-start mx-auto" style="max-width: 800px;">
-                    <h5 class="objectives-heading mb-4">OUR QUALITY OBJECTIVES:</h5>
-                    <ul class="quality-list">
-                        <li>
-                            <i class="far fa-check-circle"></i>
-                            <span>To deliver defect-free products on time, every time.</span>
-                        </li>
-                        <li>
-                            <i class="far fa-check-circle"></i>
-                            <span>To continuously improve our manufacturing processes and technological capabilities.</span>
-                        </li>
-                        <li>
-                            <i class="far fa-check-circle"></i>
-                            <span>To foster a culture of quality awareness among all employees through regular training.</span>
-                        </li>
-                        <li>
-                            <i class="far fa-check-circle"></i>
-                            <span>To maintain strict compliance with international standards such as API, ASTM, ASME, and NACE.</span>
-                        </li>
-                        <li>
-                            <i class="far fa-check-circle"></i>
-                            <span>To build long-term, mutually beneficial relationships with our customers and suppliers.</span>
-                        </li>
-                    </ul>
+                <div class="objectives-container text-start mx-auto" style="max-width: 900px;">
+                    <h5 class="objectives-heading mb-4 text-center">OUR QUALITY OBJECTIVES</h5>
+                    
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <h6 style="color: var(--primary-blue); font-weight: 600;"><i class="fas fa-users me-2"></i>Customer Satisfaction</h6>
+                            <ul class="quality-list">
+                                <li><i class="far fa-check-circle"></i> <span>Achieve ≥95% customer satisfaction rating on delivered products and services.</span></li>
+                                <li><i class="far fa-check-circle"></i> <span>Resolve customer complaints within 10 business days.</span></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h6 style="color: var(--primary-blue); font-weight: 600;"><i class="fas fa-clipboard-check me-2"></i>Compliance & Conformance</h6>
+                            <ul class="quality-list">
+                                <li><i class="far fa-check-circle"></i> <span>Maintain 100% compliance with API Q1 and applicable regulatory requirements.</span></li>
+                                <li><i class="far fa-check-circle"></i> <span>Zero non-conformities in external audits annually.</span></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h6 style="color: var(--primary-blue); font-weight: 600;"><i class="fas fa-chart-line me-2"></i>Continual Improvement</h6>
+                            <ul class="quality-list">
+                                <li><i class="far fa-check-circle"></i> <span>Implement at least 3 improvement projects per year based on risk assessment and performance data.</span></li>
+                                <li><i class="far fa-check-circle"></i> <span>Reduce corrective actions recurrence rate by 20% year-over-year.</span></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h6 style="color: var(--primary-blue); font-weight: 600;"><i class="fas fa-graduation-cap me-2"></i>Competence & Training</h6>
+                            <ul class="quality-list">
+                                <li><i class="far fa-check-circle"></i> <span>Ensure 100% of employees receive annual training relevant to their roles.</span></li>
+                                <li><i class="far fa-check-circle"></i> <span>Achieve ≥90% competency score in post-training evaluations.</span></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h6 style="color: var(--primary-blue); font-weight: 600;"><i class="fas fa-shield-alt me-2"></i>Risk Management</h6>
+                            <ul class="quality-list">
+                                <li><i class="far fa-check-circle"></i> <span>Identify and mitigate all high-risk items in product realization processes before release.</span></li>
+                                <li><i class="far fa-check-circle"></i> <span>Conduct quarterly risk reviews with documented outcomes.</span></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h6 style="color: var(--primary-blue); font-weight: 600;"><i class="fas fa-handshake me-2"></i>Supplier Quality</h6>
+                            <ul class="quality-list">
+                                <li><i class="far fa-check-circle"></i> <span>Ensure ≥95% of suppliers meet approved quality standards.</span></li>
+                                <li><i class="far fa-check-circle"></i> <span>Conduct supplier audits annually with corrective actions closed within 30 days.</span></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6 offset-md-3">
+                            <h6 style="color: var(--primary-blue); font-weight: 600;"><i class="fas fa-cogs me-2"></i>Operational Performance</h6>
+                            <ul class="quality-list">
+                                <li><i class="far fa-check-circle"></i> <span>Achieve ≥98% on-time delivery of products and services.</span></li>
+                                <li><i class="far fa-check-circle"></i> <span>Reduce internal defect rate by 15% annually.</span></li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
 
             </div>
